@@ -36,8 +36,12 @@ RUN apt-get update -qq && \
     git \
     libpq-dev \
     pkg-config \
-    nodejs && \
+    nodejs \
+    npm && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+# Install yarn
+RUN npm install -g yarn
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
@@ -51,11 +55,22 @@ COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile && \
-    ls -la public/assets && \
-    echo "Assets contents:" && \
-    find public/assets -type f
+# Ensure node_modules is installed
+RUN yarn install
+
+# Clear any existing assets
+RUN rm -rf public/assets
+
+# Ensure the assets directory exists
+RUN mkdir -p public/assets
+
+# Set environment variables for asset compilation
+ENV NODE_ENV=production \
+    RAILS_ENV=production \
+    RAILS_SERVE_STATIC_FILES=true
+
+# Precompile assets
+RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rake assets:precompile
 
 # Final stage for app image
 FROM base
