@@ -1,28 +1,24 @@
-#!/bin/bash -e
+#!/bin/bash
+set -e
 
-# Enable jemalloc for reduced memory usage and latency.
-if [ -z "${LD_PRELOAD+x}" ] && [ -f /usr/lib/*/libjemalloc.so.2 ]; then
-  export LD_PRELOAD="$(echo /usr/lib/*/libjemalloc.so.2)"
-fi
+# Remove a potentially pre-existing server.pid for Rails.
+rm -f /rails/tmp/pids/server.pid
 
-# Extract database connection details from DATABASE_URL
-if [ -n "${DATABASE_URL}" ]; then
-  # Wait for PostgreSQL to be ready using connection info from DATABASE_URL
-  until pg_isready -d "${DATABASE_URL}"; do
-    echo "Waiting for PostgreSQL to be ready..."
-    sleep 2
-  done
+# Wait for PostgreSQL to be ready
+until pg_isready -h $POSTGRES_HOST -p ${POSTGRES_PORT:-5432}; do
+  echo "Waiting for PostgreSQL to be ready..."
+  sleep 2
+done
 
-  # Create extensions if they don't exist
-  echo "Creating PostgreSQL extensions if they don't exist..."
-  psql "${DATABASE_URL}" -c 'CREATE EXTENSION IF NOT EXISTS postgis;'
-  psql "${DATABASE_URL}" -c 'CREATE EXTENSION IF NOT EXISTS fuzzystrmatch;'
-  psql "${DATABASE_URL}" -c 'CREATE EXTENSION IF NOT EXISTS pg_trgm;'
-fi
+# Create extensions if they don't exist
+echo "Creating PostgreSQL extensions if they don't exist..."
+psql -h $POSTGRES_HOST -p ${POSTGRES_PORT:-5432} -U $POSTGRES_USER -d $POSTGRES_DB -c 'CREATE EXTENSION IF NOT EXISTS postgis;'
+psql -h $POSTGRES_HOST -p ${POSTGRES_PORT:-5432} -U $POSTGRES_USER -d $POSTGRES_DB -c 'CREATE EXTENSION IF NOT EXISTS fuzzystrmatch;'
+psql -h $POSTGRES_HOST -p ${POSTGRES_PORT:-5432} -U $POSTGRES_USER -d $POSTGRES_DB -c 'CREATE EXTENSION IF NOT EXISTS pg_trgm;'
 
-# If running the rails server then create or migrate existing database
-if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
-  ./bin/rails db:prepare
-fi
+# Prepare database (create, migrate, seed)
+echo "Preparing database..."
+bin/rails db:prepare
 
-exec "${@}"
+# Then exec the container's main process
+exec "$@"
