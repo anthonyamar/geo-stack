@@ -154,6 +154,13 @@ rails credentials:edit
 ```
 Then, fill your `RAILS_MASTER_KEY` environment variable in production with new one created at `config/master.key`
 
+### Environment variables
+Don't forget to set production environment for both Rails and Node:
+```
+RAILS_ENV=production
+NODE_ENV=production
+```
+
 ### Postgis
 In order to push the template in production, you'll need to install a Postgis instance as a database, and add your environment variables like so:
 ```
@@ -167,6 +174,19 @@ DATABASE_NAME=you-database-name
 To install Postgis, you have mostly two main options(works for in development environment and production):
 1. Installing yourself all the packages. You can follow the Rgeo guide on this: (Installing Postgis)[https://github.com/rgeo/activerecord-postgis-adapter?tab=readme-ov-file#installing-postgis]
 2. Using a Docker image. The official (Postgis Docker)[https://hub.docker.com/r/postgis/postgis] image only works on x86/amd64 architecture. If you need a Docker image that runs on arm64, you can use (imresamu/postgis)[https://hub.docker.com/r/imresamu/postgis] image.
+
+**Troubleshooting Postgis community images on arm64 through Coolify**:
+If you're using Coolify as a PaaS, deploying on arm64 servers, here's the steps:
+1. Add the (imresamu/postgis)[https://hub.docker.com/r/imresamu/postgis] image in the same project of your app, so they can communicate internaly
+2. In the General tab, remove the domain, and set the Ports exposes to `5432`.
+3. In the advanced tab, uncheck Force Https, and check Consistent Container Names.
+4. Setup your Environment Variables like so:
+```
+POSTGRES_PASSWORD=your-password
+POSTGRES_USER=postgres
+```
+5. In your Ruby on Rails app, set your `DATABASE_HOST` using the suffix of your database name. I.e., by default, it is something like `docker-image-arandomstringof24chars`. Your `DATABASE_HOST` will then be `arandomstringof24chars`
+6. Don't forget to restart both your database and your app.
 
 ## Merging updates
 Merge changes from the `geo-stack`remote configured above:
