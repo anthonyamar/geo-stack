@@ -15,6 +15,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Assets
 gem 'image_processing', '~> 1.2'
 gem 'importmap-rails'
+gem 'terser'
 
 # Hotwire ecosystem
 gem 'stimulus-rails'
