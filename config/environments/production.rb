@@ -21,7 +21,7 @@ Rails.application.configure do
   # config.require_master_key = true
 
   # Enable static file serving from the `/public` folder (turn off if using NGINX/Apache for it).
-  # config.public_file_server.enabled = true
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress CSS using a preprocessor.
   config.assets.css_compressor = nil # Important pour Tailwind
@@ -32,6 +32,12 @@ Rails.application.configure do
 
   # Enable asset pipeline
   config.assets.enabled = true
+
+  # Version of your assets, change this if you want to expire all your assets.
+  config.assets.version = "1.0"
+
+  # Verifies that versions and hashed value of the package contents in the project's package.json
+  config.assets.digest = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"

@@ -60,6 +60,7 @@ FROM base
 # Copy built artifacts: gems, application
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
+COPY --from=build /rails/public/assets /rails/public/assets
 
 # Create necessary directories
 RUN mkdir -p db log storage tmp
