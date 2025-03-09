@@ -1,0 +1,33 @@
+<div class="flex min-h-full flex-col justify-center px-6 py-36 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <%= image_tag("logos/logo.png", class: "mx-auto h-10 w-auto", alt: "Logo of DiveSitesFinder") %>
+    <h1 class="heading-1 mt-10 text-center text-2xl"><%= t(".title") %></h1>
+  </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: "space-y-6", method: :put }) do |f| %>
+      <%= render "users/shared/error_messages", resource: resource %>
+      <%= f.hidden_field :reset_password_token %>
+      <div>
+        <div class="flex items-center justify-between">
+          <label for="password" class="block text-sm font-medium leading-6 text-dark-blue"><%= t(".new_password") %></label>
+        </div>
+        <div class="mt-2">
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: t(".password_placeholder"), required: true, class: "input w-full" %>
+        </div>
+        <div class="flex items-center justify-between">
+          <label for="password" class="block text-sm font-medium leading-6 text-dark-blue"><%= t(".new_password_confirmation") %></label>
+        </div>
+        <div class="mt-2">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: t(".password_placeholder"), required: true, class: "input w-full" %>
+        </div>
+      </div>
+
+      <div>
+        <%= f.button t(".change_my_password"), class: "btn btn-primary w-full" %>
+      </div>
+    <% end %>
+
+    <%= render "users/shared/links" %>
+  </div>
+</div>

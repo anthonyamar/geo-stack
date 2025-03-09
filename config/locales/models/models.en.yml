@@ -1,0 +1,10 @@
+en:
+  models:
+    users:
+      attributes:
+        email:
+          label: "Email"
+          hint: "Enter your email address"
+        password:
+          label: "Password"
+          hint: "Enter your password"

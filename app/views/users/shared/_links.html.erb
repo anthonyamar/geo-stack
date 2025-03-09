@@ -1,0 +1,20 @@
+<%- if controller_name != 'sessions' %>
+  <p class="mt-2 text-center text-sm text-gray-500">
+    <%= t(".already_member") %>
+    <%= link_to t(".sign_in"), new_user_session_path, class: "font-semibold leading-6 text-main-sky hover:text-sky-400" %>
+  </p>
+<% end %>
+
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <p class="mt-2 text-center text-sm text-gray-500">
+    <%= t(".not_a_member_yet") %>
+    <%= link_to t(".sign_up"), new_user_registration_path, class: "font-semibold leading-6 text-main-sky hover:text-sky-400" %>
+  </p>
+<% end %>
+
+<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  <p class="mt-2 text-center text-sm text-gray-500">
+    <%= t(".did_not_receive_confirmation_instructions") %>
+    <%= link_to t(".confirmation_instructions"), new_confirmation_path(resource_name), class: "font-semibold leading-6 text-main-sky hover:text-sky-400" %>
+  </p>
+<% end %>

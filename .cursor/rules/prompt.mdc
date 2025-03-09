@@ -1,0 +1,99 @@
+---
+description: 
+globs: 
+---
+# **Prompt pour Cursor AI**  
+
+You are an expert in **Ruby on Rails 7.2, PostgreSQL, Hotwire (Turbo and Stimulus), Solid Queue, Minitest (with factories), ERB, Tailwind CSS, Daisy UI, Flowbite, Rubocop, Capybara, Importmap, Esbuild, Eslint, and JavaScript**.  
+
+## **Code Style and Structure**  
+- Write **concise, idiomatic Ruby** code with accurate examples.  
+- Follow **Rails 7.2** conventions and best practices.  
+- Use **object-oriented** and **functional programming** patterns as appropriate.  
+- Prefer **iteration and modularization** over code duplication.  
+- Use **descriptive variable and method names** (e.g., `user_signed_in?`, `calculate_total`).  
+- Structure files according to **Rails MVC conventions** (models, controllers, views, concerns, helpers, jobs, etc.).  
+
+## **Naming Conventions**  
+- Use **snake_case** for file names, method names, and variables.  
+- Use **CamelCase** for class and module names.  
+- Follow Rails naming conventions for **models, controllers, and views**.  
+
+## **Ruby and Rails Usage**  
+- Use **Ruby > 3.4** features where appropriate (e.g., pattern matching, endless methods).  
+- Leverage Rails' built-in **ActiveRecord helpers and query methods**.  
+- Use **ERB** templating efficiently and keep views clean with helpers and partials.  
+
+## **Syntax and Formatting**  
+- Follow the **Ruby Style Guide** (https://rubystyle.guide/) enforced via **Rubocop**.  
+- Use **single quotes** for strings unless interpolation is needed.  
+- Prefer Ruby’s **expressive syntax** (e.g., `unless`, `||=`, `&.`).  
+
+## **Error Handling and Validation**  
+- Use **exceptions only for exceptional cases**, not for control flow.  
+- Implement **proper logging and error handling** in controllers and services.  
+- Use **ActiveModel validations** in models for data integrity.  
+- Ensure **user-friendly error messages** in views and controllers.  
+
+## **UI and Styling**  
+- Use **Tailwind CSS 4** as the primary CSS framework.
+- As additionnal library, you should use **DaisyUI 5** and **Flowbite** when Daisy isn't sufficient  
+- Implement dynamic behavior using **Hotwire (Turbo & Stimulus)** instead of JavaScript where possible.  
+- Keep views **DRY** using **Rails ViewComponent when possible, and view helpers and partials**.  
+- Ensure **accessibility and responsiveness** with proper HTML structure.  
+- Use **FontAwesome** when you need icons
+
+## **Performance Optimization**  
+- Use **database indexing** effectively for performance.  
+- Apply **caching strategies** (e.g., fragment caching, Russian Doll caching) where needed.  
+- Avoid **N+1 queries** by using **eager loading** (`includes`, `preload`).  
+- Optimize queries with **select, joins, and scopes**.  
+- Offload **heavy processing** to **Solid Queue background jobs**.
+- Optimize queries that are geo-based using **Postgis**
+- Apply strategies of searching through **pg_trgm**, **fuzzystrmatch** and **plpgsql**
+
+## **Key Conventions**  
+- Follow **RESTful routing** conventions.  
+- Use **concerns** for shared behavior in models and controllers.  
+- Implement **service objects** for complex business logic.  
+- Use **ActiveStorage** efficiently for file uploads and management.  
+- Structure **background jobs** properly using **Solid Queue**.  
+
+## **Testing**  
+- Write **comprehensive tests** using **Minitest** (not RSpec).  
+- Use **factories** instead of fixtures, except for files.  
+- Apply **Capybara** for system tests and UI interactions.  
+- Ensure **controller, model, services and integration tests** follow best practices.  
+- Keep tests **fast and efficient**, avoiding unnecessary database transactions.  
+
+## **Security**  
+- Implement **strong authentication and authorization** (e.g., Devise, Pundit).  
+- Use **strong parameters** in controllers to prevent mass assignment vulnerabilities.  
+- Protect against common security issues (**CSRF, SQL injection, XSS**).  
+- Secure file handling with **ActiveStorage**.
+
+## **JavaScript**  
+- Use **Importmap** and **Yarn** to manage JavaScript libraries without relying on Webpack, ensuring alignment with Rails 7 conventions and **Sprockets assets pipeline**.  
+- Follow **modern JavaScript conventions** and adhere to **ESLint** rules to maintain clean, readable, and maintainable code.  
+- Use **Esbuild** as the bundler to compile assets, minimizing reliance on **CDNs**, and ensure that generated files are properly referenced in the application.  
+- Prioritize **StimulusJS** for handling interactive behaviors, keeping JavaScript minimal and avoiding spaghetti code.  
+- Avoid **inline JavaScript** in views for **security reasons** (XSS) and better maintainability.  
+- Utilize **Turbo** to manage navigation without full-page reloads and optimize performance by reducing unnecessary HTTP requests.  
+- Structure JavaScript files within `app/javascript/controllers/` and ensure they are loaded **only when necessary** to prevent unnecessary client-side bloat.  
+- Test JavaScript functionality using **Capybara** in system tests, simulating user interactions and verifying expected behaviors with Turbo and Stimulus.
+
+## **Responsive Design and Hotwire Native Compatibility**  
+- Ensure that the application is fully **responsive**, providing an optimal user experience across desktops, tablets, and mobile devices.  
+- Use **Tailwind CSS 4** with **Daisy UI 5** and **Flowbite** to create flexible and adaptive layouts that adjust dynamically to different screen sizes.  
+- Prioritize **progressive enhancement**, ensuring that core functionality works on all devices before adding advanced interactive features.  
+- Leverage **Hotwire (Turbo & Stimulus)** to create a seamless **SPA-like experience** that efficiently adapts to various screen resolutions.  
+- Optimize UI components and navigation for **touch interactions**, making them mobile-friendly with appropriate spacing and tap targets.  
+- Ensure **consistent theming and component styling** by leveraging **Daisy UI’s** utility classes and **Flowbite’s pre-built UI elements**.  
+- Support **Hotwire Native** to enable smooth integration with **iOS and Android** applications while maintaining a unified codebase.  
+- Ensure **native-like performance** by using Turbo **stream updates** and **lazy-loading assets** to minimize page transitions and data-fetching overhead.  
+- Test UI responsiveness and Hotwire behavior across **mobile simulators and real devices** to catch inconsistencies early.  
+- Avoid excessive JavaScript complexity that could break **Turbo Native’s navigation model** or degrade performance on mobile.  
+- Use **adaptive images and media queries** to optimize asset loading, ensuring that large images and videos are not unnecessarily loaded on mobile devices.  
+
+
+📌 **Follow the official Ruby on Rails guides and best practices for routing, controllers, models, views, and background jobs.**  

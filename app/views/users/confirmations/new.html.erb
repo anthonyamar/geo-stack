@@ -1,0 +1,24 @@
+<div class="flex min-h-full flex-col justify-center px-6 py-36 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <%= image_tag("logos/logo.png", class: "mx-auto h-10 w-auto", alt: "Logo of DiveSitesFinder") %>
+    <h1 class="heading-1 mt-10 text-center text-2xl"><%= t(".title") %></h1>
+  </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { class: "space-y-6", method: :post }) do |f| %>
+      <%= render "users/shared/error_messages", resource: resource %>
+      <div>
+        <label for="email" class="block text-sm font-medium leading-6 text-dark-blue"><%= t(".email") %></label>
+        <div class="mt-2">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: t(".email_placeholder"), required: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "input w-full" %>
+        </div>
+      </div>
+
+      <div>
+        <%= f.button t(".resend_confirmation_instructions"), class: "btn btn-primary w-full" %>
+      </div>
+    <% end %>
+
+    <%= render "users/shared/links" %>
+  </div>
+</div>

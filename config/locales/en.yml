@@ -1,0 +1,271 @@
+en:
+  error_pages:
+    500:
+      title: "An error has occurred."
+      heading_html: "This is not a bug. <br>It's an interpretation."
+      quote_html: "&quot;A false note played timidly is a false note.<br>A false note played with conviction is an interpretation.&quot; <cite>Miles Davis</cite>"
+      cta: "Book a studio"
+      back: "Or go back"
+    404:
+      title: "This page no longer exists."
+      heading_html: "This page is no longer."
+      quote_html: "&quot;Love and music can do anything, except  &quot;not being&quot;&quot;.<br> <cite>Hélène Grimaud</cite>"
+      cta: "Book a studio"
+      back: "Or go back"
+    422:
+      title: "This change was not accepted"
+      heading_html: "A wrong note has crept into the data"
+      quote_html: "&quot;When you play a note, only the next one will tell if it was right or wrong.&quot; <cite>Miles Davis</cite>"
+      cta: "Book a studio"
+      back: "Or go back"
+    406:
+      title: "Votre navigateur n'est pas supporté - 406"
+      heading: "Votre navigateur n'est pas supporté"
+      paragraph: "Nous ne supportons pas votre navigateur. Veuillez utiliser un navigateur plus moderne et compatible avec notre site, tel que Chrome, Brave, Firefox, Safari ou Opera."
+      cta: "Réserver un studio"
+      back: "Ou revenir en arrière"
+  activerecord:
+    errors:
+      messages:
+        invalid_date: "is not a valid date"
+        invalid_time: "is not a valid hour"
+        invalid_datetime: "is not a valid date"
+        is_at: "should be at %{restriction}"
+        before: "should be before %{restriction}"
+        on_or_before: "should be during or before %{restriction}"
+        after: "should be after %{restriction}"
+        on_or_after: "should be during or after %{restriction}"
+        record_invalid: 'Validation failed : %{errors}'
+        restrict_dependent_destroy:
+          has_one: "You cannot delete the recording because a %{record} dependent exists"
+          has_many: "You cannot delete the recording because the %{record} dependent exist"
+        file_size: "Too heavy. Max size : %{size}%{unit}."
+  date:
+    abbr_day_names:
+    - "sun."
+    - "mon."
+    - "tue."
+    - "wed."
+    - "thu."
+    - "fri."
+    - "sat."
+    abbr_month_names:
+    -
+    - "jan."
+    - "feb."
+    - "mar."
+    - "apr."
+    - "may"
+    - "jun."
+    - "jul."
+    - "aug."
+    - "sept."
+    - "oct."
+    - "nov."
+    - "dec."
+    day_names:
+    - "sunday"
+    - "monday"
+    - "tuesday"
+    - "wednesday"
+    - "thursday"
+    - "friday"
+    - "saturday"
+    formats:
+      default: "%m/%d/%Y"
+      short: "%e %b"
+      long: "%A %e %B %Y"
+      custom: "%A %d %B"
+      month_year: "%B %Y"
+    month_names:
+    -
+    - "january"
+    - "febuary"
+    - "march"
+    - "april"
+    - "may"
+    - "june"
+    - "july"
+    - "august"
+    - "september"
+    - "october"
+    - "november"
+    - "december"
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    formats:
+      long: "%A %e à %B %Y"
+    distance_in_words:
+      about_x_hours:
+        one: "about an hour"
+        other: "about %{count} hours"
+      about_x_months:
+        one: "about a month"
+        other: "about %{count} months"
+      about_x_years:
+        one: "about un an"
+        other: "about %{count} years"
+      almost_x_years:
+        one: "almost a year"
+        other: "almost %{count} years"
+      half_a_minute: "half a minute"
+      less_than_x_minutes:
+        zero: "less than a minute"
+        one: "less than a minute"
+        other: "less than %{count} minutes"
+      less_than_x_seconds:
+        zero: "less than a second"
+        one: "less than a second"
+        other: "less than %{count} seconds"
+      over_x_years:
+        one: "more than a year"
+        other: "more than %{count} years"
+      x_days:
+        one: "1 day"
+        other: "%{count} days"
+      x_minutes:
+        one: "1 minute"
+        other: "%{count} minutes"
+      x_hours:
+        one: "1 heure"
+        other: "%{count} hours"
+      x_months:
+        one: "1 month"
+        other: "%{count} months"
+      x_years:
+        one: "a year"
+        other: "%{count} years"
+      x_seconds:
+        one: "1 second"
+        other: "%{count} seconds"
+    prompts:
+      day: "Day"
+      hour: "Hour"
+      minute: "Minute"
+      month: "Month"
+      second: "Second"
+      year: "Year"
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: "must be accepted"
+      blank: "must be filled"
+      present: "must be empty"
+      confirmation: "does not agree with %{attribute}"
+      empty: "must be filled"
+      equal_to: "must be equal to %{count}"
+      even: "must be even"
+      exclusion: "is not available"
+      greater_than: "must be greater than %{count}"
+      greater_than_or_equal_to: "must be greater or equal to %{count}"
+      inclusion: "is not included in the list"
+      invalid: "isn't valid"
+      less_than: "must be less to %{count}"
+      less_than_or_equal_to: "must be less or equal to %{count}"
+      model_invalid: "Validation failed : %{errors}"
+      not_a_number: "isn't a number"
+      not_an_integer: "must be a whole number"
+      odd: "must be odd"
+      required: "must exist"
+      taken: "is not available"
+      too_long:
+        one: "too long (no more than a character)"
+        other: "too long (no more than %{count} characters)"
+      too_short:
+        one: "too short (no more than a character)"
+        other: "too short (no more than %{count} characters)"
+      wrong_length:
+        one: "is not the right length (must be one character)"
+        other: "is not the right length (must be %{count} character)"
+      other_than: "must be different than %{count}"
+    template:
+      body: "Please check the following fields : "
+      header:
+        one: "Unable to store this %{model} : 1 error"
+        other: "Unable to store this %{model} : %{count} errors"
+  helpers:
+    select:
+      prompt: "Please select"
+    submit:
+      create: "Create a %{model}"
+      submit: "Save this %{model}"
+      update: "Update this %{model}"
+  number:
+    currency:
+      format:
+        delimiter: " "
+        format: "%n %u"
+        precision: 2
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: "€"
+    format:
+      delimiter: " "
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: "billion"
+          million: "million"
+          quadrillion: "quadrillion"
+          thousand: "thousand"
+          trillion: "trillion"
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "byte"
+            other: "bytes"
+          gb: "gb"
+          kb: "kb"
+          mb: "mb"
+          tb: "tb"
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: " and "
+      two_words_connector: " and "
+      words_connector: ", "
+  time:
+    am: am
+    formats:
+      default: "%d %B %Y %Hh %Mmin %Ss"
+      long: "%A %d %B %Y tp %Hh%M"
+      short: "%d %b %Hh%M"
+      custom: "%A %d %B to %Hh%M"
+      custom_from: "%A %d %B from %Hh%M"
+      custom_year: "%A %d %B %Y at %Hh%M"
+      custom_year_short: "%A %d/%m/%Y at %Hh%M"
+      long_date: "%A %d %B %Y"
+      short_date: "%d %b"
+      hours_only: "%Hh"
+      time_only: "%H:%M"
+      date_only: "%d/%m/%Y"
+      short_date_and_hour: "%d/%m/%y at %Hh"
+      wday_day_month_hours: "%A %d/%m/%y at %Hh:%M"
+  boolean:
+    true: "True"
+    false: "False"
+    yes_or_no:
+      true: "Yes"
+      false: "No"

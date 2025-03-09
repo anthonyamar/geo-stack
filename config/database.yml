@@ -1,0 +1,21 @@
+default: &default
+  url: <%= ENV['DATABASE_URL'].try(:sub, /^postgres(ql)?:\/\//, 'postgis://') %>
+  adapter: postgis
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: geo_stack
+  password: password
+
+development:
+  <<: *default
+  database: geo_stack_development
+
+test:
+  <<: *default
+  database: geo_stack_test
+
+production:
+  <<: *default
+  database: geo_stack_production
+  username: geo_stack
+  password: <%= ENV["GEO_STACK_DATABASE_PASSWORD"] %>

@@ -1,0 +1,58 @@
+en:
+  users:
+    confirmations:
+      new:
+        title: "Resend confirmation instructions"
+        email: "Email address"
+        email_placeholder: "email@example.com"
+        resend_confirmation_instructions: "Resend confirmation instructions"
+        not_member_yet: "Not a member yet?"
+        sign_up: "Sign up"
+        already_member: "Already a member?"
+        forgot_password: "Forgot password?"
+        sign_in: "Sign in"
+    passwords:
+      edit:
+        title: "Change your password"
+        new_password: "New password"
+        new_password_confirmation: "New password confirmation"
+        change_my_password: "Change my password"
+        password_placeholder: "********"
+      new:
+        title: "Forgot password?"
+        email: "Email address"
+        email_placeholder: "email@example.com"
+        send_me_reset_password_instructions: "Send me reset password instructions"
+    registrations:
+      edit:
+        title: "Edit your account"
+        new_password: "New password"
+        password_placeholder: "**********"
+        new_password_confirmation: "Confirm new password"
+        edit_my_account: "Edit my account"
+        sign_out: "Sign out"
+        cancel_confirmation: "Are you sure you want to cancel your account ?"
+      new:
+        title: "Sign up"
+        email: "Email address"
+        email_placeholder: "email@example.com"
+        password: "Password"
+        password_placeholder: "**********"
+    sessions:
+      new:
+        title: "Login"
+        email: "Email address"
+        email_placeholder: "email@example.com"
+        password: "Password"
+        password_placeholder: "**********"
+        sign_in: "Sign in"
+        forgot_password: "Forgot password?"
+        sign_up_for_free: "Sign up for free!"
+    shared:
+      links:
+        already_member: "Already a member?"
+        sign_in: "Sign in"
+        not_a_member_yet: "Not a member yet?"
+        sign_up: "Sign up"
+        did_not_receive_confirmation_instructions: "Didn't receive confirmation instructions?"
+        confirmation_instructions: "Confirmation instructions"

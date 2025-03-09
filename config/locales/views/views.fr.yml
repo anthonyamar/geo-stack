@@ -1,0 +1,62 @@
+fr:
+  users:
+    confirmations:
+      new:
+        title: "Renvoyer les instructions de confirmation"
+        email: "Adresse email"
+        email_placeholder: "email@exemple.com"
+        resend_confirmation_instructions: "Renvoyer les instructions de confirmation"
+        not_member_yet: "Pas encore membre ?"
+        sign_up: "S'inscrire"
+        already_member: "Déjà membre ?"
+        forgot_password: "Mot de passe oublié ?"
+        sign_in: "Se connecter"
+    passwords:
+      edit:
+        title: "Changer votre mot de passe"
+        new_password: "Nouveau mot de passe"
+        new_password_confirmation: "Confirmation du nouveau mot de passe"
+        change_my_password: "Changer mon mot de passe"
+        password_placeholder: "********"
+      new:
+        title: "Mot de passe oublié ?"
+        email: "Adresse email"
+        email_placeholder: "email@exemple.com"
+        send_me_reset_password_instructions: "Envoyer les instructions de réinitialisation"
+    registrations:
+      edit:
+        title: "Modifier votre compte"
+        new_password: "Nouveau mot de passe"
+        password_placeholder: "**********"
+        new_password_confirmation: "Confirmer le nouveau mot de passe"
+        edit_my_account: "Modifier mon compte"
+        sign_out: "Se déconnecter"
+        cancel_my_account: "Annuler mon compte"
+        cancel_confirmation: "Êtes-vous sûr de vouloir annuler votre compte ?"
+      new:
+        title: "Inscription"
+        email: "Adresse email"
+        email_placeholder: "email@exemple.com"
+        password: "Mot de passe"
+        password_placeholder: "**********"
+        sign_up: "S'inscrire"
+        already_member: "Déjà membre ?"
+        logo_alt: "Logo du site"
+    sessions:
+      new:
+        title: "Connexion"
+        email: "Adresse email"
+        email_placeholder: "email@exemple.com"
+        password: "Mot de passe"
+        password_placeholder: "**********"
+        sign_in: "Se connecter"
+        forgot_password: "Mot de passe oublié ?"
+        sign_up_for_free: "S'inscrire gratuitement"
+    shared:
+      links:
+        already_member: "Déjà membre ?"
+        sign_in: "Se connecter"
+        not_a_member_yet: "Pas encore membre ?"
+        sign_up: "S'inscrire"
+        did_not_receive_confirmation_instructions: "Pas de confirmation ?"
+        confirmation_instructions: "Instructions de confirmation"

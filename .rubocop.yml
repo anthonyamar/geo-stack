@@ -1,0 +1,68 @@
+require: rubocop-rails
+
+AllCops:
+  NewCops: enable
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - 'test/**/*'
+    - 'db/migrate/**/*'
+
+Rails/Output:
+  Enabled: false
+
+Style/SafeNavigationChainLength:
+  Enabled: false
+
+Style/StringLiteralsInInterpolation:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Style/StringLiterals:
+  Enabled: false
+  EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - db/migrate/**/*
+
+Style/ArrayCoercion:
+  Enabled: true
+
+Style/HashAsLastArrayItem:
+  Enabled: true
+
+Style/HashLikeCase:
+  Enabled: true
+
+Style/RedundantAssignment:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: true
+  EnforcedStyle: compact
+
+Style/CommentAnnotation:
+  Enabled: false

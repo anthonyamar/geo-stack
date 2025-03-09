@@ -1,0 +1,33 @@
+<div class="flex min-h-full flex-col justify-center px-6 py-36 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <h1 class="heading-1 mt-10 text-2xl"><%= t(".title") %></h1>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "space-y-6", method: :put }) do |f| %>
+      <%= render "users/shared/error_messages", resource: resource %>
+      <div>
+        <div class="flex items-center justify-between">
+          <label for="password" class="block text-sm font-medium leading-6 text-dark-blue"><%= t(".new_password") %></label>
+        </div>
+        <div class="mt-2">
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: t(".password_placeholder"), required: true, class: "input w-full" %>
+        </div>
+        <div class="flex items-center justify-between">
+          <label for="password" class="block text-sm font-medium leading-6 text-dark-blue"><%= t(".new_password_confirmation") %></label>
+        </div>
+        <div class="mt-2">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "**********", required: true, class: "input w-full" %>
+        </div>
+      </div>
+
+      <div>
+        <%= f.button t(".edit_my_account"), class: "btn btn-primary w-full" %>
+      </div>
+    <% end %>
+
+    <p class="mt-10 text-sm text-gray-500">
+      <%= link_to t(".sign_out"), destroy_user_session_path, data: { turbo_method: :delete }, class: "font-semibold leading-6 text-main-sky hover:text-sky-400" %>
+    </p>
+    <p class="mt-2 text-sm text-gray-500">
+      <%= link_to t(".cancel_my_account"), registration_path(resource_name), data: { confirm: t(".cancel_confirmation"), turbo_confirm: t(".cancel_confirmation"), turbo_method: :delete }, class: "font-semibold leading-6 text-red-500 hover:text-red-400" %>
+    </p>
+  </div>
+</div>

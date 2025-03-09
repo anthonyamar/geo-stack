@@ -1,0 +1,40 @@
+<meta charset="utf-8">
+<link rel="canonical" href="<%= request.original_url %>">
+<meta name="description" content="<%= meta_description %>">
+
+<% if noindex && nofollow %>
+  <meta name="robots" content="noindex, nofollow" />
+<% elsif !noindex && nofollow %>
+  <meta name="robots" content="index, nofollow" />
+<% elsif noindex && !nofollow %>
+  <meta name="robots" content="noindex, follow" />
+<% elsif !noindex && !nofollow %>
+  <meta name="robots" content="index, follow" />
+<% end %>
+
+<% if meta_author %>
+  <meta name="author" content="<%= meta_author %>">
+<% end %>
+<% if meta_keywords %>
+  <meta name="keywords" content="<%= meta_keywords %>">
+<% end %>
+
+<!-- Facebook OpenGraph meta tags -->
+<!-- <meta name="facebook-domain-verification" content="yhbds3mw6va0igcybn7ys65rf53qsy" /> -->
+<meta property="og:title" content="<%= meta_title %>">
+<meta property="og:type" content="<%= og_type %>">
+<meta property="og:url" content="<%= request.original_url %>">
+<meta property="og:image" content="<%= meta_image %>">
+<meta property="og:description" content="<%= meta_description.to_s.force_encoding("UTF-8") %>">
+<meta property="og:site_name" content="Your Website Name">
+
+<!-- Twitter meta tags -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
+<meta property="twitter:title" content="<%= meta_title %>">
+<meta property="twitter:description" content="<%= meta_description %>">
+<meta property="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
+<meta property="twitter:image:src" content="<%= meta_image %>">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

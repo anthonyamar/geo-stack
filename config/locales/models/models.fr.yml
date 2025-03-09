@@ -1,0 +1,10 @@
+fr:
+  models:
+    users:
+      attributes:
+        email:
+          label: "Email"
+          hint: "Entrez votre adresse email"
+        password:
+          label: "Mot de passe"
+          hint: "Entrez votre mot de passe"

@@ -1,0 +1,31 @@
+{
+  "name": "dive-sites-finder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:anthonyamar/dive-sites-finder.git",
+  "author": "anthonyamar <anthonyamar@labodessons.fr>",
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "daisyui": "^5.0.0-beta.2",
+    "flowbite": "^3.0.0",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^4.0.0"
+  },
+  "scripts": {
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css",
+    "watch:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --watch",
+    "lint": "yarn run eslint app/javascript",
+    "lint:fix": "yarn run eslint app/javascript --fix"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^5.2.3",
+    "prettier": "^3.4.2"
+  }
+}
