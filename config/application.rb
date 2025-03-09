@@ -34,5 +34,7 @@ module GeoStack
 
     # Handle dynamicaly the errors (exceptions) raised
     config.exceptions_app = self.routes
+
+    config.assets.initialize_on_precompile = false
   end
 end
