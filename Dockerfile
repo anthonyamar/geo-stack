@@ -58,6 +58,9 @@ COPY --from=build /rails /rails
 # Create necessary directories
 RUN mkdir -p db log storage tmp
 
+# Ensure entrypoint script is executable
+RUN chmod +x /rails/bin/docker-entrypoint
+
 # Run and own only the runtime files as a non-root user for security
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
