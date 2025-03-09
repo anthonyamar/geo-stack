@@ -65,7 +65,7 @@ Run your server
 bin/dev
 ```
 
-Visit localhost:3000 and Yay 🎉, you're on Rails !
+Visit (localhost:3000)[http://localhost:3000/] and Yay 🎉, you're on Rails !
 
 ## Configuration and libs
 ### Theme configuration
@@ -127,7 +127,7 @@ add_index :cities, :geocoder_data, using: :gin
 
 Then use, i.e `city.geocoder_data.country` to access all the Geocoder methods outputing data.
 
-#### FuzzySearchable
+#### `FuzzySearchable`
 Expose a `fuzzy_search_by` class methods so you can do something like:
 ```ruby
 # fuzzy_search_by(attributes, value, threshold: nil, limit: 10)
@@ -136,8 +136,6 @@ User.fuzzy_search_by("name", "Kylian", threshold: 0.8, limit: 3)
 # Kylian
 # Kyllian
 # Kyliann
-# Kyliane
-# Kylan
 ```
 
 In your migration, index the attributes that you will query:
