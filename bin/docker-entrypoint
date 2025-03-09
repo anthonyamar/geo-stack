@@ -5,6 +5,21 @@ if [ -z "${LD_PRELOAD+x}" ] && [ -f /usr/lib/*/libjemalloc.so.2 ]; then
   export LD_PRELOAD="$(echo /usr/lib/*/libjemalloc.so.2)"
 fi
 
+# Extract database connection details from DATABASE_URL
+if [ -n "${DATABASE_URL}" ]; then
+  # Wait for PostgreSQL to be ready using connection info from DATABASE_URL
+  until pg_isready -d "${DATABASE_URL}"; do
+    echo "Waiting for PostgreSQL to be ready..."
+    sleep 2
+  done
+
+  # Create extensions if they don't exist
+  echo "Creating PostgreSQL extensions if they don't exist..."
+  psql "${DATABASE_URL}" -c 'CREATE EXTENSION IF NOT EXISTS postgis;'
+  psql "${DATABASE_URL}" -c 'CREATE EXTENSION IF NOT EXISTS fuzzystrmatch;'
+  psql "${DATABASE_URL}" -c 'CREATE EXTENSION IF NOT EXISTS pg_trgm;'
+fi
+
 # If running the rails server then create or migrate existing database
 if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
   ./bin/rails db:prepare
