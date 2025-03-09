@@ -145,6 +145,15 @@ add_index :users, :name, using: :gin, opclass: :gin_trgm_ops
 add_index :users, :email, using: :gin, opclass: :gin_trgm_ops
 ```
 
+## Production
+### Master key
+You may need to generate a Rails master key for your production environment.
+```bash
+rm config/credentials.yml.enc config/master.key
+rails credentials:edit
+```
+Then, fill your `RAILS_MASTER_KEY` environment variable in production with new one created at `config/master.key`
+
 ## Merging updates
 Merge changes from the `geo-stack`remote configured above:
 ```bash
