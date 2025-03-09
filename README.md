@@ -3,7 +3,7 @@ Geo stack is an opiniated Rails stack to build a modern website without the need
 
 It was extracted from a project that is providing geo-based data insight for travelers. Thus the PG configuration using geo and search extensions.
 
-Except the geo and search features, this stack is pretty "Rails standard", I mean "DHH standard", thus "Geo stack" 😄.
+Except the geo and search features, this stack is pretty "Rails standard".
 
 ## The stack
 - Ruby 3.4.x
