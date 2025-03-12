@@ -64,6 +64,9 @@ RUN rm -rf public/assets
 # Ensure the assets directory exists
 RUN mkdir -p public/assets
 
+# Build assets CSS, Tailwind and Daisy using yarn
+RUN yarn build:css
+
 # Set environment variables for asset compilation
 ENV NODE_ENV=production \
     RAILS_ENV=production \
