@@ -64,9 +64,6 @@ RUN rm -rf public/assets
 # Ensure the assets directory exists
 RUN mkdir -p public/assets
 
-# Build assets CSS, Tailwind and Daisy using yarn
-RUN yarn build:css
-
 # Set environment variables for asset compilation
 ENV NODE_ENV=production \
     RAILS_ENV=production \
@@ -74,6 +71,9 @@ ENV NODE_ENV=production \
 
 # Precompile assets
 RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rake assets:precompile
+
+# Build assets CSS, Tailwind and Daisy using gem
+RUN bin/rails tailwindcss:build
 
 # Final stage for app image
 FROM base
