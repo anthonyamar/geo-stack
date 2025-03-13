@@ -72,9 +72,6 @@ ENV NODE_ENV=production \
 # Precompile assets
 RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rake assets:precompile
 
-# Build assets CSS, Tailwind and Daisy using gem
-RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rake tailwindcss:build
-
 # Final stage for app image
 FROM base
 
