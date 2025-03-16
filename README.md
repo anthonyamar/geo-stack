@@ -11,7 +11,7 @@ Except the geo and search features, this stack is pretty "Rails standard".
 - Postgresql with Postgis, Pgtrgm, Plpsql and Fuzzystrmatch
 - Rgeo suite for geo data manipulation
 - Pg search and jaro winkler gems for fuzzy search
-- TailwindCSS 4 with DaisyUI 5 and Flowbite 3
+- TailwindCSS 4 with DaisyUI 5
 - ViewComponent
 - Stimulus JS
 - Turbo 8
@@ -29,7 +29,7 @@ Except the geo and search features, this stack is pretty "Rails standard".
 - Translation ready for FR and EN
 - SEO ready using FriendlyId and sitemap_generator
 
-Yet:
+Soon:
 - Solid queue
 - Solid cache
 - Turbo Native iOS and Android template
@@ -69,9 +69,9 @@ Visit (localhost:3000)[http://localhost:3000/] and Yay 🎉, you're on Rails !
 
 ## Configuration and libs
 ### Theme configuration
-Use the [DaisyUI Theme Generator](https://daisyui.com/theme-generator/) to make your theme, then replace the config in `application.tailwind.css`. You can also tweak heading, paragraph, link and Pagy style in this file.
+Use the [DaisyUI Theme Generator](https://daisyui.com/theme-generator/) to make your theme, then replace the config in `app/assets/tailwind/application.css`. You can also tweak heading, paragraph, link and Pagy style in this file.
 
-You can change Tailwind configuration, i.e. colors, spacing, radius, fonts in `tailwind.config.js`. This kind of config is a legacy from Tailwind 3. It works well, but could be changed for a full CSS approach as suggested in Tailwind 4 docs.
+You can change Tailwind configuration, i.e. colors, spacing, radius, fonts in this file as well. See [Tailwind theme doc](https://tailwindcss.com/docs/theme)
 
 ### FontAwesome
 Add your FontAwesome kit in `application.html.erb` to get icon classes.
@@ -155,10 +155,9 @@ rails credentials:edit
 Then, fill your `RAILS_MASTER_KEY` environment variable in production with new one created at `config/master.key`
 
 ### Environment variables
-Don't forget to set production environment for both Rails and Node:
+Don't forget to set production environment for Rails:
 ```
 RAILS_ENV=production
-NODE_ENV=production
 ```
 
 ### Postgis
@@ -172,12 +171,12 @@ DATABASE_NAME=you-database-name
 ```
 
 To install Postgis, you have mostly two main options(works for in development environment and production):
-1. Installing yourself all the packages. You can follow the Rgeo guide on this: (Installing Postgis)[https://github.com/rgeo/activerecord-postgis-adapter?tab=readme-ov-file#installing-postgis]
-2. Using a Docker image. The official (Postgis Docker)[https://hub.docker.com/r/postgis/postgis] image only works on x86/amd64 architecture. If you need a Docker image that runs on arm64, you can use (imresamu/postgis)[https://hub.docker.com/r/imresamu/postgis] image.
+1. Installing yourself all the packages. You can follow the Rgeo guide on this: [Installing Postgis](https://github.com/rgeo/activerecord-postgis-adapter?tab=readme-ov-file#installing-postgis)
+2. Using a Docker image. The official [Postgis Docker](https://hub.docker.com/r/postgis/postgis) image only works on x86/amd64 architecture. If you need a Docker image that runs on arm64, you can use [imresamu/postgis](https://hub.docker.com/r/imresamu/postgis) image.
 
 **Troubleshooting Postgis community images on arm64 through Coolify**:
 If you're using Coolify as a PaaS, deploying on arm64 servers, here's the steps:
-1. Add the (imresamu/postgis)[https://hub.docker.com/r/imresamu/postgis] image in the same project of your app, so they can communicate internaly
+1. Add the [imresamu/postgis](https://hub.docker.com/r/imresamu/postgis) image in the same project of your app, so they can communicate internaly
 2. In the General tab, remove the domain, and set the Ports exposes to `5432`.
 3. In the advanced tab, uncheck Force Https, and check Consistent Container Names.
 4. Setup your Environment Variables like so:
