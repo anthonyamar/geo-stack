@@ -575,7 +575,7 @@ DEPENDENCIES
   spring-watcher-listen
   sprockets-rails
   stimulus-rails
-  tailwindcss-rails
+  tailwindcss-rails (~> 4.2)
   terser
   timezone
   turbo-rails

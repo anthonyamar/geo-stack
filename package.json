@@ -6,7 +6,8 @@
   "author": "anthonyamar <anthonyamar@labodessons.fr>",
   "license": "MIT",
   "dependencies": {
-    "autoprefixer": "^10.4.20"
+    "autoprefixer": "^10.4.20",
+    "daisyui": "^5.0.4"
   },
   "scripts": {
     "lint": "yarn run eslint app/javascript",

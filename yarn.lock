@@ -429,6 +429,11 @@ cross-spawn@^7.0.2:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
+daisyui@^5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-5.0.4.tgz#afac841df7ddfe6173501e22d0bfd2a677f736b9"
+  integrity sha512-9X3oX/k9hPBCslAECk8kYfvwgrz6Grs0lN7VI0/ZTM/hUfq1uFREHxCcBCCq0QROpN183N19B1hTNRWGipO2Eg==
+
 data-view-buffer@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/data-view-buffer/-/data-view-buffer-1.0.2.tgz#211a03ba95ecaf7798a8c7198d79536211f88570"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ServiceWorkerController < ApplicationController
   protect_from_forgery except: :service_worker
   #  skip_before_action :authenticate_user! - To activate if Devise

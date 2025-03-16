@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html data-theme="light">
+<html data-theme="custom-theme">
   <head lang="en">
     <title><%= meta_title %> | Your website name</title>
     <%= render "layouts/meta_tags" %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="manifest" crossorigin="use-credentials" href="/manifest.json" />
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
