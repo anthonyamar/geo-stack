@@ -62,7 +62,7 @@ RUN yarn install
 RUN rm -rf public/assets
 
 # Ensure the assets directory exists
-RUN mkdir -p public/assets
+RUN mkdir -p public/assets app/assets/builds
 
 # Set environment variables for asset compilation
 ENV NODE_ENV=production \
