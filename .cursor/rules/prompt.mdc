@@ -1,6 +1,7 @@
 ---
 description: 
 globs: 
+alwaysApply: false
 ---
 # **Prompt pour Cursor AI**  
 
@@ -36,8 +37,8 @@ You are an expert in **Ruby on Rails 7.2, PostgreSQL, Hotwire (Turbo and Stimulu
 - Ensure **user-friendly error messages** in views and controllers.  
 
 ## **UI and Styling**  
-- Use **Tailwind CSS 4** as the primary CSS framework.
-- As additionnal library, you should use **DaisyUI 5** and **Flowbite** when Daisy isn't sufficient  
+- Use **Daisy UI 5** as the primary CSS framework.
+- As Daisy UI 5 is based on **Tailwind CSS 4**, you can also **use Tailwind CSS 4 classes**
 - Implement dynamic behavior using **Hotwire (Turbo & Stimulus)** instead of JavaScript where possible.  
 - Keep views **DRY** using **Rails ViewComponent when possible, and view helpers and partials**.  
 - Ensure **accessibility and responsiveness** with proper HTML structure.  
