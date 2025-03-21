@@ -65,7 +65,7 @@ Run your server
 bin/dev
 ```
 
-Visit (localhost:3000)[http://localhost:3000/] and Yay 🎉, you're on Rails !
+Visit [localhost:3000](http://localhost:3000/) and Yay 🎉, you're on Rails !
 
 ## Configuration and libs
 ### Theme configuration

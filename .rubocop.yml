@@ -1,7 +1,20 @@
-require: rubocop-rails
+plugins:
+  - rubocop-rails
 
 AllCops:
   NewCops: enable
+  Exclude:
+    - Gemfile
+    - bin/*
+    - config/initializers/**/*
+    - config/environments/**/*
+    - config/puma.rb
+    - db/migrate/*.rb
+    - db/schema.rb
+    - node_modules/**/*
+    - storage/**/*
+    - tmp/**/*
+    - vendor/bundle/**/*
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
