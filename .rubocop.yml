@@ -1,3 +1,6 @@
+inherit_gem:
+  rubocop-rails-omakase: rubocop.yml
+
 plugins:
   - rubocop-rails
 
@@ -16,11 +19,14 @@ AllCops:
     - tmp/**/*
     - vendor/bundle/**/*
 
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
-Layout/FirstHashElementIndentation:
-  EnforcedStyle: consistent
+Layout/SpaceInsideArrayLiteralBrackets:
+  EnforcedStyle: no_space
 
 Metrics/AbcSize:
   Enabled: false

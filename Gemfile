@@ -86,7 +86,7 @@ group :test do
   gem 'mocha'
   gem 'rails-controller-testing'
   gem 'rubocop', require: false
-  gem 'rubocop-rails', require: false
+  gem 'rubocop-rails-omakase', require: false
   gem 'shoulda'
   gem 'simplecov', require: false
 end

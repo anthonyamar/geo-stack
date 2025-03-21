@@ -27,12 +27,12 @@ module Geocoderable
     return @struct if defined?(@struct)
 
     @struct = if geocoder_data.present?
-                deep_open_struct(geocoder_data.deep_symbolize_keys)
-              elsif store_geocoder_data
-                deep_open_struct(fetch_and_store_geocoder_data.deep_symbolize_keys)
-              else
-                {}
-              end
+      deep_open_struct(geocoder_data.deep_symbolize_keys)
+    elsif store_geocoder_data
+      deep_open_struct(fetch_and_store_geocoder_data.deep_symbolize_keys)
+    else
+      {}
+    end
 
     @struct
   end
