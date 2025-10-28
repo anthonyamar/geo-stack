@@ -23,7 +23,7 @@ gem 'turbo-rails'
 
 # Front end
 gem 'draper'
-gem 'tailwindcss-rails', '~> 4.2'
+gem 'tailwindcss-rails', '~> 4.4'
 gem 'view_component'
 
 # Geo services
