@@ -3,7 +3,7 @@
   endpoints, jobs. Unit tests and edge cases. Delivers logic ready for thin
   controllers. Delegate in parallel for domain/backend slices.
 name: backend-builder
-model: grok-4.5[effort=high,fast=true]
+model: grok-4.6[effort=xhigh,fast=true]
 description: >-
 ---
 

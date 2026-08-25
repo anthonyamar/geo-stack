@@ -3,7 +3,7 @@
   input is a written spec + existing patterns; screenshot/v0 only when attached.
   Delegate in parallel for ready-to-render components.
 name: view-component-builder
-model: grok-4.5[effort=high,fast=true]
+model: grok-4.6[effort=xhigh,fast=true]
 description: >-
 ---
 
