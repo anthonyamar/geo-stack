@@ -53,4 +53,4 @@ coverage/
 .worktrees/
 
 # Ignore playwright
-.playwright/*
+.playwright-cli/
