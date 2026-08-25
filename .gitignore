@@ -51,3 +51,6 @@ coverage/
 
 # Isolated git worktrees
 .worktrees/
+
+# Ignore playwright
+.playwright/*
