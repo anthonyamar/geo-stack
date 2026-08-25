@@ -1,0 +1,46 @@
+<head>
+  <title><%= content_for?(:meta_title) ? yield(:meta_title) : meta_title %> | <%= GeoStack::APP_NAME %></title>
+  <%= render "layouts/meta_tags" %>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <link rel="manifest" crossorigin="use-credentials" href="/manifest.json" />
+
+  <%# FOUC: apply DaisyUI theme before first paint (preference in localStorage). %>
+  <script nonce="<%= content_security_policy_nonce %>">
+    (function () {
+      var root = document.documentElement;
+      var locked = root.getAttribute("data-theme-lock");
+      if (locked) {
+        root.setAttribute("data-theme", locked);
+        return;
+      }
+      var key = "app-theme-preference";
+      var light = "user-theme";
+      var dark = "user-theme-dark";
+      var preference = "system";
+      try {
+        var stored = localStorage.getItem(key);
+        if (stored === "system" || stored === "light" || stored === "dark") {
+          preference = stored;
+        }
+      } catch (e) {}
+      var theme = light;
+      if (preference === "dark") {
+        theme = dark;
+      } else if (preference === "system") {
+        theme =
+          window.matchMedia("(prefers-color-scheme: dark)").matches ? dark : light;
+      }
+      root.setAttribute("data-theme", theme);
+    })();
+  </script>
+
+  <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+  <%= favicon_link_tag asset_path("favicon.ico"), rel: "icon", type: "image/x-icon" %>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100;9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900;9..40,1000&family=DM+Serif+Display&display=swap" rel="stylesheet">
+</head>

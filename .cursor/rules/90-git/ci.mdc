@@ -1,0 +1,31 @@
+---
+description: Local CI gate before pull requests (bin/ci)
+alwaysApply: true
+---
+
+# Continuous integration
+
+## Canonical command
+
+- Run **`bin/ci`** after substantive changes and before opening a pull request.
+- Do not open a PR while `bin/ci` is failing.
+- Run **`bin/ci --sign`** only once the branch is pushed (with upstream tracking) and a PR is open — or when iterating on an open PR to attest it is merge-ready.
+
+## What `bin/ci` runs
+
+Defined in `config/ci.rb`:
+
+1. **Setup** — `bin/setup --skip-server --frozen-lockfile` (Ruby + Yarn deps, asset build, database)
+2. **Assets** — Tailwind CSS + JS bundles (explicit step before tests)
+3. **Style** — `bin/rubocop`, `bin/eslint`
+4. **Security** — `bin/bundler-audit`, `bin/yarn-audit`, Brakeman
+5. **Tests** — `bin/rails test`, `bin/rails test:system`
+6. **Signoff** (with `--sign` only) — `gh signoff` (requires `gh` CLI, `gh extension install basecamp/gh-signoff`, and a branch tracking `origin/<branch>`)
+
+## Agent workflow
+
+- During implementation: run **`bin/ci`** (or the relevant step) before claiming work is complete.
+- Before opening a PR: run **`bin/ci`**; fix failures and re-run.
+- After the PR is open: run **`bin/ci --sign`** when attesting the branch is ready to merge (re-run on each iteration if needed).
+- If a step fails, fix the failure and re-run; do not skip steps or hooks.
+- Node version is pinned in `.node-version` (22.x); Ruby in `.ruby-version` (4.0.1).

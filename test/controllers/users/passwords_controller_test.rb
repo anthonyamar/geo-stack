@@ -4,6 +4,7 @@ require "test_helper"
 
 class Users::PasswordsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    skip_unless_devise_route!(:new_user_password)
     @user = create(:user, :confirmed, email: "test@example.com")
   end
 
@@ -15,10 +16,7 @@ class Users::PasswordsControllerTest < ActionDispatch::IntegrationTest
   test "should send reset password instructions with valid email" do
     post user_password_path, params: { user: { email: @user.email } }
     assert_redirected_to new_user_session_path
-    # rubocop:disable Layout/LineLength
-    msg = "Si votre e-mail existe dans notre base de données, vous allez recevoir un lien de réinitialisation par e-mail."
-    # rubocop:enable Layout/LineLength
-    assert_match msg, flash[:notice].to_s
+    assert_match I18n.t("devise.passwords.send_paranoid_instructions"), flash[:notice].to_s
   end
 
   test "should not send reset instructions with invalid email" do

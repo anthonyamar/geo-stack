@@ -1,0 +1,50 @@
+---
+description: Service objects (ApplicationService, .call true/false, save_records, naming)
+globs:
+  - "app/services/**/*.rb"
+alwaysApply: false
+---
+
+# Service objects
+
+Apply when adding or editing classes under `app/services/` (except `ApplicationService` itself).
+
+## Base class
+
+- Every service **inherits from `ApplicationService`**.
+- Expose behavior through **`.call`** (class method delegates to instance `#call` via `ApplicationService.call`). All other methods must go under `private`
+
+## Return value
+
+- **`#call` returns `true` or `false`** to signal success or failure.
+- **Exception**: when callers need a persisted record or other payload and a boolean alone is not enough, return that object (e.g. the created join). Use sparingly; document why in the service if non-obvious.
+- Do not use exceptions for ordinary business failure when `false` is enough; reserve `raise` for truly exceptional paths (see `ruby-style`).
+
+## Database writes
+
+When the service **persists or deletes** data:
+
+1. Wrap all writes in **`save_records { ... }`** (provided by `ApplicationService` — runs an `ActiveRecord` transaction and rescues validation/destruction errors).
+2. Put **every** create/update/destroy inside that block.
+3. Use bang APIs (`save!`, `create!`, `update!`, `destroy!`, `delete!`, etc.) so failures raise and **`save_records` returns `false`** after rollback.
+4. On success, **`save_records` returns `true`**; `#call` should return that boolean (unless the exception above applies).
+5. For actions like `create!` and `update!`, pass a `params` hash/object from the controller instead of passing separate params with their column name. I.e., do : `def initialize(entity:, params:)`, not `def initialize(dive_center:, dive_site:, travel_time_in_min: nil, notes: nil)`. For `create!` action, the new record should be instanciated in the controller method, and passed as an argument to `initialize` and without params.
+
+Read-only services (filters, builders without persistence, pure orchestration with no DB writes) skip `save_records` but still follow the **`true` / `false`** contract when they can fail.
+
+## Naming and layout
+
+- **Model-scoped actions** (create, update, destroy, promote, …): namespace matches the **singular model name**, action name describes the verb.
+  - Example: user creation → `User::Create` in `app/services/user/create.rb`.
+  - Examples in the app: `CityDiveSite::Create`, `DiveCenterDiveSite::Create`, `Reviews::Create`.
+- **Non-CRUD domain services** (filters, geodata pipelines, importers): same file layout under `app/services/<domain>/`, class name describes the capability (`DiveSite::AccessibleFrom`, `Geodata::Orchestrator`).
+- File path: `snake_case` directories and file names mirroring the constant (`User::Create` → `user/create.rb`).
+
+## Controllers and jobs
+
+- Prefer **`SomeService.call(...)`** over duplicating transaction logic in controllers or jobs.
+- Controllers interpret `true` / `false` (flash, redirect, status); keep strong parameters and HTTP concerns in the controller.
+
+## Tests
+
+Service testing conventions live in **`50-testing/testing-services.mdc`** (`test/services/**/*_test.rb`).

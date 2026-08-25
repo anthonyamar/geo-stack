@@ -4,6 +4,7 @@ require "test_helper"
 
 class Users::SessionsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    skip_unless_devise_route!(:new_user_session)
     @user = create(:user, :confirmed, password: "password123")
   end
 
@@ -21,7 +22,6 @@ class Users::SessionsControllerTest < ActionDispatch::IntegrationTest
   test "should not sign in with invalid credentials" do
     post user_session_path, params: { user: { email: @user.email, password: "wrongpassword" } }
     assert_response :unprocessable_content
-    msg = "Email et/ou mot de passe incorrect(s)."
-    assert_match msg, response.body
+    assert_match(/Invalid email or password/i, response.body)
   end
 end

@@ -4,7 +4,9 @@ module GeoBoundingBox
   extend ActiveSupport::Concern
 
   included do
-    raise ArgumentError, "must have bounding_box column to include GeoBoundingBox" unless column_names.include?("bounding_box_geom")
+    unless column_names.include?("bounding_box_geom")
+      raise ArgumentError, "must have bounding_box_geom column to include GeoBoundingBox"
+    end
 
     validates :lonlat, presence: true
   end

@@ -4,19 +4,19 @@ en:
       title: "An error has occurred."
       heading_html: "This is not a bug. <br>It's an interpretation."
       quote_html: "&quot;A false note played timidly is a false note.<br>A false note played with conviction is an interpretation.&quot; <cite>Miles Davis</cite>"
-      cta: "Book a studio"
+      cta: "Go home"
       back: "Or go back"
     404:
       title: "This page no longer exists."
       heading_html: "This page is no longer."
       quote_html: "&quot;Love and music can do anything, except  &quot;not being&quot;&quot;.<br> <cite>Hélène Grimaud</cite>"
-      cta: "Book a studio"
+      cta: "Go home"
       back: "Or go back"
     422:
       title: "This change was not accepted"
       heading_html: "A wrong note has crept into the data"
       quote_html: "&quot;When you play a note, only the next one will tell if it was right or wrong.&quot; <cite>Miles Davis</cite>"
-      cta: "Book a studio"
+      cta: "Go home"
       back: "Or go back"
     406:
       title: "Votre navigateur n'est pas supporté - 406"

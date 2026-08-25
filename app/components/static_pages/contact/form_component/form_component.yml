@@ -1,0 +1,19 @@
+en:
+  email_label: "Email"
+  email_placeholder: "email@example.com"
+  message_label: "Message"
+  message_placeholder: "How can we help you?"
+  name_label: "Name"
+  name_placeholder: "How you want to be called"
+  submit: "Send message"
+  title: "Send us a message"
+
+fr:
+  email_label: "Email"
+  email_placeholder: "email@exemple.com"
+  message_label: "Message"
+  message_placeholder: "Comment pouvons-nous vous aider ?"
+  name_label: "Nom"
+  name_placeholder: "Comment vous faire appeler"
+  submit: "Envoyer le message"
+  title: "Envoyez-nous un message"

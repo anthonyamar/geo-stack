@@ -4,39 +4,44 @@ require_relative "boot"
 
 require "rails/all"
 
-# Require the gems listed in Gemfile, including any gems
+# Require the gems listed in the Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module GeoStack # rubocop:disable Style/ClassAndModuleChildren
+module GeoStack
+  # Public hostname (mail From, mailer URLs, sitemap). Change only here.
+  APP_NAME = "Your Website Name"
+  DOMAIN = "example.com"
+  MAILER_FROM_ADDRESS = "humans@#{DOMAIN}".freeze
+  MAILER_FROM = "#{APP_NAME} <#{MAILER_FROM_ADDRESS}>".freeze
+
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.2
+    config.load_defaults 8.1
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
-    config.active_support.to_time_preserves_timezone = :zone
-
     # I18n
-    config.i18n.available_locales = %i[fr en]
-    config.i18n.default_locale = :fr
+    config.i18n.available_locales = %i[en fr]
+    config.i18n.default_locale = :en
 
-    # Load the translations from the views
+    # Nested locales + component sidecars with absolute scopes.
+    # Flat top-level keys in component YAML can collide — see i18n_load_path.rb.
     config.i18n.load_path += Rails.root.glob("config/locales/**/*.{rb,yml}")
     config.i18n.load_path += Rails.root.glob("app/views/**/*.{rb,yml}")
+    config.i18n.load_path += Rails.root.glob("app/components/**/*.yml")
 
-    # Handle dynamicaly the errors (exceptions) raised
-    config.exceptions_app = self.routes
+    # Handle dynamically the errors (exceptions) raised
+    config.exceptions_app = routes
+
+    # Configuration Active Job with Solid Queue
+    config.active_job.queue_adapter = :solid_queue
+
+    # Configuration Solid Queue to use the same database
+    config.solid_queue.connects_to = { database: { writing: :primary, reading: :primary } }
 
     config.assets.initialize_on_precompile = false
   end

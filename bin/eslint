@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "open3"
+require "pathname"
+
+APP_ROOT = Pathname.new(__dir__).join("..").expand_path
+
+Dir.chdir(APP_ROOT) do
+  stdout, stderr, status = Open3.capture3("yarn", "lint")
+  $stdout.write(stdout)
+  $stderr.write(stderr)
+  exit(status.exitstatus || 1)
+end

@@ -1,0 +1,22 @@
+---
+description: Tests Minitest pour `test/jobs` (ActiveJob / Solid Queue)
+globs: "test/jobs/**/*_test.rb"
+alwaysApply: false
+---
+
+# Tests — `test/jobs`
+
+## Role
+
+- Verify the job calls the right service methods with the right arguments and handles expected errors (retry, swallow, notify).
+
+## Strategy
+
+- Perform the job synchronously with ActiveJob test helpers per project patterns.
+- Stub external effects (mailers, HTTP, third-party SDKs). Assert minimal observable effect (service method called, follow-up job enqueued).
+- Happy path + representative failure when the job rescues or reports.
+- Avoid real-time-dependent tests; use `travel_to` when needed.
+
+## Clean phase
+
+- Renamed job or changed `perform` arity: update the test; deleted job: delete the test file. Do not resurrect obsolete jobs for a green suite.

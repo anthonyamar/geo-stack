@@ -1,0 +1,15 @@
+---
+description: Tests Minitest (factories, Shoulda, Capybara avec parcimonie, descriptions en anglais)
+globs: "test/**/*_test.rb"
+alwaysApply: false
+---
+
+# Testing
+
+- Framework: Minitest (not RSpec). Use factories over fixtures except for static files (or binary fixtures) when needed.
+- Descriptions/names: always English, in simple quotes.
+- System tests: Capybara only when necessary (slow/flaky); favor faster layers (model, service, controller, component tests).
+- System tests: do not launch a full file test suite in the terminal. Tests are slow, run it one by one.
+- Cover happy path + main failure modes; avoid exhaustive edge-case archaeology unless the bug demands it.
+- Shoulda: use `setup` / `context` (and matchers) to DRY structured tests and scope related tests together. Prefer `should '...' do` over `test '...' do`.
+- Aim for solid coverage on components, concerns, helpers, decorators, but keep tests simple and fast.

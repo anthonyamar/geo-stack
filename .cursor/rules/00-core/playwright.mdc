@@ -1,0 +1,28 @@
+---
+description: Browser testing and JS/UI debugging with Playwright CLI and dedicated test accounts
+alwaysApply: true
+---
+
+# Playwright (browser testing)
+
+## When to use
+
+When testing or debugging **JavaScript interactions**, **Stimulus/Turbo behavior**, or **UI/design**, use the **`playwright-cli`** skill (`.cursor/skills/playwright-cli/SKILL.md`). Do not improvise browser automation without reading that skill first.
+
+Prefer Playwright over guessing from code alone when the task needs a real browser (clicks, forms, maps, responsive layout, etc.).
+
+## Test accounts (already seeded)
+
+These accounts **already exist** in the database. **Do not recreate them** (no seeds, factories, or console `User.create` for automation).
+
+| Role  | Email                         | Password                 |
+|-------|-------------------------------|--------------------------|
+| User  | `agent@divesitesfinder.com`   | `Agentic?Playwright9328!` |
+| Admin | `agent@divesitesfinder.com`   | `Agentic?Playwright9328!` |
+
+Use the **admin** account when admin-only flows are required. Use the **agent** account for normal signed-in user flows.
+
+## Do not pollute production-like data
+
+- **Do not** use the agent account to **create reviews** (or other user-generated content that stays visible in the app). That leaves traces other users can see.
+- Prefer read-only checks, ephemeral flows, or admin tooling when mutating data is unavoidable.

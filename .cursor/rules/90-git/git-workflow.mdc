@@ -1,0 +1,26 @@
+---
+description: Git workflow (main uniquement, pas de dev sur main, conventions PR/CI)
+alwaysApply: true
+---
+
+# Git workflow
+
+## Default branch
+
+- The **only** default integration branch is **`main`**. Treat this as fixed project policy.
+- Open pull requests and rebase/merge targets against **`main`**.
+
+## Before starting feature work
+
+- Check the current Git branch first (e.g. `git branch --show-current`).
+- If the branch is **`main`**, **do not** implement changes on it. Create a new branch from an up-to-date **`main`**, check it out, then write code.
+- Prefer naming branches with a short prefix (issue id, topic) consistent with repo habits.
+
+## Before opening a pull request
+
+- Run `bin/ci` locally before opening any PR.
+
+## After the pull request is open
+
+- Push the branch with upstream tracking (`git push -u origin <branch>` or `gpsup`).
+- Run `bin/ci --sign` to sign off when the PR is merge-ready; re-run after each iteration on the open PR.

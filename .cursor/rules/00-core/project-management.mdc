@@ -1,0 +1,35 @@
+---
+description: Project management workflow (Linear projects+issues, GitHub PRs, solo-dev team-like process)
+alwaysApply: true
+---
+
+# Project management
+
+## Source of truth for project management: Github issues
+
+- Use **Github** as the **project management source of truth**.
+- Model **macro tasks** as **Issues**, then **break them down into smallers Issues**.
+- When you need to read/create/update Github, **you MUST use the gh**.
+- If you cannot access gh CLI (auth missing / tool unavailable), stop and ask for the minimal action required to re-enable it.
+
+
+## Source of truth for code: GitHub (PR-centric)
+
+- The code repository is **`/geo-stack`**.
+- Use GitHub for **code review artifacts**: branches, commits, pull requests, CI checks, and release history.
+- Use the **GitHub CLI (`gh`)** for GitHub operations (PR creation, checks, comments, etc.).
+- When linking work, prefer referencing the **Linear Issue/Project** in PR descriptions and commit context (rather than GitHub Issues).
+
+## Branching & isolation strategy
+
+- Follow the existing `git-workflow` rule (no development on `main`, PRs target `main`, run `bin/ci` before PR, `bin/ci --sign` once the PR is open).
+- When running locally with filesystem access, prefer **git worktrees** for isolation (parallel work, clean context).
+- When using **Cloud Agents** (no local filesystem or limited environment), prefer **branches** following repo conventions.
+
+## Solo developer, team-like workflow
+
+- Assume the user is the **sole developer**, but operates with **team-like rigor**:
+  - The user plays PM: expects structured scoping, explicit decisions, and traceability.
+  - The user plays reviewer: expects review-ready diffs, clear PR descriptions, and verified changes.
+- Optimize for **clarity, iteration, and auditability**: decisions written down (Linear), small reviewable slices (issues/PRs), and evidence-based verification (CI/local checks).
+- When an assignation is possible (issue, projects, PR, task, review...), always assign the user. The account maybe one of the following: anthonyamar ; anthony@studiomatic.co ; anthonyamar@labodessons.fr

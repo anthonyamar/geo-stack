@@ -4,25 +4,25 @@ fr:
       title: "Une erreur est survenue - 500."
       heading: "Une erreur est survenue."
       paragraph: "Nous nous efforçons de régler ce problème au plus vite. N'hésitez pas à nous contacter via le chat si cela est bloquant pour vous."
-      cta: "Réserver un studio"
+      cta: "Retour à l'accueil"
       back: "Ou revenir en arrière"
     404:
       title: "Cette page n'existe plus - 404"
       heading: "Cette page n'existe plus."
       paragraph: "Il se peut que celle-ci ait été supprimée ou qu'elle n'ait jamais existé. N'hésitez pas à nous contacter via le chat si cela est bloquant pour vous."
-      cta: "Réserver un studio"
+      cta: "Retour à l'accueil"
       back: "Ou revenir en arrière"
     422:
       title: "Ce modification n'a pas été accepté - 422"
       heading: "Cette modification n'a pas été acceptée"
       paragraph: "Vous n'avez peut-être pas les droits nécessaires pour faire cette modification, ou les données sont erronées. N'hésitez pas à nous contacter via le chat si cela est bloquant pour vous."
-      cta: "Réserver un studio"
+      cta: "Retour à l'accueil"
       back: "Ou revenir en arrière"
     406:
       title: "Votre navigateur n'est pas supporté - 406"
       heading: "Votre navigateur n'est pas supporté"
       paragraph: "Nous ne supportons pas votre navigateur. Veuillez utiliser un navigateur plus moderne et compatible avec notre site, tel que Chrome, Brave, Firefox, Safari ou Opera."
-      cta: "Réserver un studio"
+      cta: "Retour à l'accueil"
       back: "Ou revenir en arrière"
   activerecord:
     errors:

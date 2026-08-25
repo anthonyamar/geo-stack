@@ -1,35 +1,8 @@
 #!/bin/bash -e
 
-# Enable jemalloc for reduced memory usage and latency.
-if [ -z "${LD_PRELOAD+x}" ] && [ -f /usr/lib/*/libjemalloc.so.2 ]; then
-  export LD_PRELOAD="$(echo /usr/lib/*/libjemalloc.so.2)"
-fi
-
-# Remove a potentially pre-existing server.pid for Rails.
-rm -f /rails/tmp/pids/server.pid
-
-# Parse DATABASE_URL
-if [ -n "${DATABASE_URL}" ]; then
-  # Extract host and port from DATABASE_URL
-  DB_HOST=$(echo $DATABASE_URL | sed -n 's/.*@\([^:]*\).*/\1/p')
-  DB_PORT=$(echo $DATABASE_URL | sed -n 's/.*:\([0-9]*\)\/.*/\1/p')
-
-  # Wait for PostgreSQL to be ready
-  until pg_isready -h "${DB_HOST}" -p "${DB_PORT:-5432}"; do
-    echo "Waiting for PostgreSQL to be ready..."
-    sleep 2
-  done
-
-  # Create extensions if they don't exist
-  echo "Creating PostgreSQL extensions if they don't exist..."
-  psql "${DATABASE_URL}" -c 'CREATE EXTENSION IF NOT EXISTS postgis;'
-  psql "${DATABASE_URL}" -c 'CREATE EXTENSION IF NOT EXISTS fuzzystrmatch;'
-  psql "${DATABASE_URL}" -c 'CREATE EXTENSION IF NOT EXISTS pg_trgm;'
-fi
-
-# If running the rails server then create or migrate existing database
-if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
-  ./bin/rails db:prepare
+# If running the rails server, migrate the existing database (PostGIS is provisioned separately).
+if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
+  ./bin/rails db:migrate
 fi
 
 exec "${@}"

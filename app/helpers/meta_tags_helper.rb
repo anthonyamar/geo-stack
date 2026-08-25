@@ -30,11 +30,11 @@ module MetaTagsHelper
     end
   end
 
-  def noindex
+  def noindex # rubocop:disable Naming/PredicateMethod
     content_for?(:noindex)
   end
 
-  def nofollow
+  def nofollow # rubocop:disable Naming/PredicateMethod
     content_for?(:nofollow)
   end
 end

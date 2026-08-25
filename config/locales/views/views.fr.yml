@@ -11,6 +11,7 @@ fr:
         already_member: "Déjà membre ?"
         forgot_password: "Mot de passe oublié ?"
         sign_in: "Se connecter"
+        logo_alt: "Logo du site"
     passwords:
       edit:
         title: "Changer votre mot de passe"
@@ -18,11 +19,13 @@ fr:
         new_password_confirmation: "Confirmation du nouveau mot de passe"
         change_my_password: "Changer mon mot de passe"
         password_placeholder: "********"
+        logo_alt: "Logo du site"
       new:
         title: "Mot de passe oublié ?"
         email: "Adresse email"
         email_placeholder: "email@exemple.com"
         send_me_reset_password_instructions: "Envoyer les instructions de réinitialisation"
+        logo_alt: "Logo du site"
     registrations:
       edit:
         title: "Modifier votre compte"
@@ -52,6 +55,7 @@ fr:
         sign_in: "Se connecter"
         forgot_password: "Mot de passe oublié ?"
         sign_up_for_free: "S'inscrire gratuitement"
+        logo_alt: "Logo du site"
     shared:
       links:
         already_member: "Déjà membre ?"

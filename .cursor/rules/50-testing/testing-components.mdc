@@ -1,0 +1,22 @@
+---
+description: Tests Minitest pour `test/components` (ViewComponent)
+globs: "test/components/**/*_test.rb"
+alwaysApply: false
+---
+
+# Tests — `test/components`
+
+## Role
+
+- Assert rendering and critical elements (titles, buttons, empty states, badges) without a full browser run unless necessary.
+
+## Strategy
+
+1. Happy path: `render_inline(Component.new(...))` with minimal valid props; assert on stable text/selector.
+2. One secondary variant per important axis (nil/empty collection/flag/auth stub) — not an exhaustive CSS-class matrix.
+3. Stub heavy dependencies (helpers, `Current`, policy objects, APIs); no real I/O.
+4. Previews are not regression tests unless explicitly requested.
+
+## Performance
+
+- Avoid full-stack Capybara by default; stay at component render level.

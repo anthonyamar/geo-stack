@@ -1,0 +1,9 @@
+<% content_for :main_class, "container mx-auto px-4 py-8 sm:py-12" %>
+
+<div class="mx-auto w-full max-w-3xl">
+  <header class="mb-8 sm:mb-10">
+    <h1 class="heading-3 sm:text-3xl"><%= t(".title") %></h1>
+  </header>
+
+  <%= render ArticleWrapperComponent.new(html: @content.html) %>
+</div>

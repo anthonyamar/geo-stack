@@ -48,3 +48,9 @@ latest.dump
 coverage/
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# Isolated git worktrees
+.worktrees/
+
+# Ignore playwright
+.playwright-cli/

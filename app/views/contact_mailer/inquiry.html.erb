@@ -1,0 +1,10 @@
+<p><%= t(".greeting") %></p>
+
+<p>
+  <strong><%= t(".from") %>:</strong>
+  <%= @contact_message.name %>
+  &lt;<%= @contact_message.email %>&gt;
+</p>
+
+<p><strong><%= t(".message") %>:</strong></p>
+<p><%= simple_format(@contact_message.message) %></p>

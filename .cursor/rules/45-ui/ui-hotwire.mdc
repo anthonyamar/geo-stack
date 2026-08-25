@@ -1,0 +1,18 @@
+---
+description: UI (views/templates) — Tailwind 4 + DaisyUI 5, ViewComponent, Hotwire, accessibilité
+globs:
+  - "app/views/**/*.{erb,haml,html,slim}"
+  - "app/components/**/*.{erb,html}"
+alwaysApply: false
+---
+
+# UI (views and component templates)
+
+- CSS: **Tailwind CSS 4** + **DaisyUI 5**. Prefer using DaisyUI components/utilities when it improves consistency, and Tailwind utilities for layout/spacing.
+- **Dark mode:** every new/changed template must work with DaisyUI themes (including `dark`). Prefer semantic tokens (`bg-base-100`, `bg-base-200`, `text-base-content`, `border-base-200`, `text-primary`, `hover:bg-base-200`) over raw palette colors (`text-gray-900`, `bg-white`, `hover:bg-gray-50`, `text-dark-blue`) unless a `dark:` variant is also provided.
+- Prefer Turbo + Stimulus over bespoke JS. Keep JS minimal and data-attribute-driven.
+- DRY: prefer **ViewComponent** with `--sidecar` (template + YAML beside the Ruby class); helpers next; partials only when a component is not a good fit.
+- Icons: **FontAwesome** when icons are needed (see `package.json`).
+- Accessibility & responsive: semantic HTML, labels, focus, spacing; avoid layouts that break Turbo or mobile tap targets.
+- Hotwire Native: avoid heavy client-only navigation patterns; favor Turbo and progressive enhancement.
+- Security: avoid inline scripts in views (XSS and maintainability).

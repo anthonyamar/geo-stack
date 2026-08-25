@@ -1,0 +1,14 @@
+---
+description: Tests for agent workflows (RubyLLM::Test, Langfuse integration)
+globs:
+  - "test/agents/**/*_test.rb"
+alwaysApply: false
+---
+
+# Testing agents
+
+- Framework: Minitest. Descriptions in English.
+- Stub LLM calls with `RubyLLM::Test` — do not hit provider APIs in unit tests.
+- Langfuse connectivity tests may call the Langfuse API when credentials are present; skip otherwise (`skip` unless `ENV['LANGFUSE_PUBLIC_KEY']`).
+- Prefer testing agent logic with stubbed responses; reserve live Langfuse fetches for stable fixture prompts (e.g. `test/rails-test-prompt`).
+- Follow RubyLLM and Langfuse documentation for testing patterns as agents are implemented.

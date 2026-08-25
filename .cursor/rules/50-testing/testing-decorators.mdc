@@ -1,0 +1,17 @@
+---
+description: Tests Minitest pour `test/decorators` (présentation / Draper)
+globs: "test/decorators/**/*_test.rb"
+alwaysApply: false
+---
+
+# Tests — `test/decorators`
+
+## Role
+
+- Decorators format attributes for display (dates, money, labels, states) from an underlying model or PORO.
+
+## Strategy
+
+- Test instance methods in isolation with minimal doubles or light factories.
+- Avoid DB access unless the decorator reads preloaded associations; prefer `build_stubbed` / structured doubles.
+- Cover nil and a typical value for formatted output (avoid surprise I18n/timezone issues).

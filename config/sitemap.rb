@@ -1,7 +1,9 @@
-require 'rubygems'
-require 'sitemap_generator'
+# frozen_string_literal: true
 
-SitemapGenerator::Sitemap.default_host = 'http://example.com'
+require "rubygems"
+require "sitemap_generator"
+
+SitemapGenerator::Sitemap.default_host = "https://#{GeoStack::DOMAIN}"
 SitemapGenerator::Sitemap.create do
   add '/home', priority: 0.9
 

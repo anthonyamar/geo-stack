@@ -1,0 +1,8 @@
+<% content_for :main_class, "container mx-auto px-4 py-8 sm:py-12" %>
+
+<header class="mb-8 sm:mb-10">
+  <h1 class="heading-3 sm:text-3xl"><%= t(".title") %></h1>
+  <p class="mt-2 text-base-content/70"><%= t(".subtitle") %></p>
+</header>
+
+<%= render StaticPages::Contact::FormComponent.new(contact_message: @contact_message) %>

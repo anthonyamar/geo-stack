@@ -1,6 +1,6 @@
 <div class="flex min-h-full flex-col justify-center px-6 py-36 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-    <%= image_tag("logos/logo.png", class: "mx-auto h-10 w-auto", alt: "Logo of DiveSitesFinder") %>
+    <%= image_tag("logos/logo.png", class: "mx-auto h-10 w-auto", alt: t(".logo_alt")) %>
     <h1 class="heading-1 mt-10 text-center text-2xl"><%= t(".title") %></h1>
   </div>
 
@@ -18,7 +18,7 @@
         <div class="flex items-center justify-between">
           <label for="password" class="block text-sm font-medium leading-6 text-dark-blue"><%= t(".password") %></label>
           <div class="text-sm">
-            <%= link_to(t(".forgot_password"), new_user_password_path(resource_name), class: "font-semibold text-main-sky hover:text-sky-400") %>
+            <%= link_to(t(".forgot_password"), new_user_password_path, class: "font-semibold text-main-sky hover:text-sky-400") %>
           </div>
         </div>
         <div class="mt-2">

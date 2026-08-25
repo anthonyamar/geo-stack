@@ -41,8 +41,13 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # Preview emails in the browser at /letter_opener (no auto-open tabs).
+  config.action_mailer.delivery_method = :letter_opener_web
+  config.action_mailer.perform_deliveries = true
+
   # Added during the Devise installation.
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.asset_host = 'http://localhost:3000'
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -61,6 +66,9 @@ Rails.application.configure do
 
   # Highlight code that enqueued background job in logs.
   config.active_job.verbose_enqueue_logs = true
+
+  # Use solid_queue for background jobs in development
+  config.active_job.queue_adapter = :solid_queue
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true

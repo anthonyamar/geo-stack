@@ -1,0 +1,22 @@
+<div
+  class="join border border-base-300 rounded-btn"
+  role="group"
+  aria-label="<%= t('.label') %>"
+  data-controller="theme"
+  data-component="theme-toggle"
+>
+  <% options.each do |option| %>
+    <button
+      type="button"
+      class="btn btn-sm btn-ghost join-item px-3"
+      data-theme-target="option"
+      data-theme-preference-param="<%= option[:preference] %>"
+      data-action="theme#select"
+      aria-label="<%= t(".#{option[:preference]}") %>"
+      aria-pressed="false"
+      title="<%= t(".#{option[:preference]}") %>"
+    >
+      <i class="<%= option[:icon] %>" aria-hidden="true"></i>
+    </button>
+  <% end %>
+</div>

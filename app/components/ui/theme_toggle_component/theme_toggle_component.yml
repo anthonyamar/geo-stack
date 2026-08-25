@@ -1,0 +1,11 @@
+en:
+  dark: "Dark"
+  label: "Color theme"
+  light: "Light"
+  system: "System"
+
+fr:
+  dark: "Sombre"
+  label: "Thème d'affichage"
+  light: "Clair"
+  system: "Système"

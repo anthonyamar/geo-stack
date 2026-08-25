@@ -1,0 +1,63 @@
+---
+description: Rake tasks — manuel commenté en français en tête de fichier et desc en français pour les tâches métier
+globs:
+  - "lib/tasks/**/*.rake"
+alwaysApply: false
+---
+
+# Rake tasks
+
+Apply when adding or editing files under `lib/tasks/`.
+
+## Header manual (required)
+
+Every project rake file must include a **French commented manual** immediately after `# frozen_string_literal: true` (when present), before any code.
+
+The manual must document:
+
+- **Objectif** — what the task(s) do
+- **Tâches** — full task names (`namespace:task`)
+- **Exemples** — copy-pasteable `bin/rails …` commands
+- **Flags** — env vars / options (`LIMIT`, `VERBOSE`, etc.) with meaning
+- **Sortie** — expected stdout / side effects
+- **Prérequis** — DB state, execution order, external deps (when relevant)
+
+## Task descriptions
+
+- `desc` strings for **business / geodata / data** tasks are in **French** (documented exception to the “code in English” i18n rule).
+- Keep `desc` concise; put detail in the header manual.
+
+## When changing tasks
+
+Update the header manual in the same change as any new task, renamed task, or new/changed flag.
+
+## Batch usage
+
+If the rake task is taking a `BATCH_ID` argument, and is working with batch, make sure that at the end of the task, the method `batch.update_statistics!` is called to ensure all counters are stored.
+
+## Template
+
+```ruby
+# frozen_string_literal: true
+#
+# Manuel — geodata:backfill_city_dive_sites
+#
+# Objectif :
+#   Peuple la table city_dive_sites pour tous les DiveSite (associations d'accès).
+#
+# Tâches :
+#   geodata:backfill_city_dive_sites
+#   geodata:backfill_dive_center_dive_sites
+#
+# Exemples :
+#   bin/rails geodata:backfill_city_dive_sites
+#   LIMIT=100 VERBOSE=1 bin/rails geodata:backfill_city_dive_sites
+#
+# Flags :
+#   LIMIT      — nombre max d'enregistrements traités (optionnel)
+#   BATCH_ID   — id du Batch pour les logs ETL (optionnel)
+#   VERBOSE=1  — affiche la progression en console (puts)
+#
+# Sortie :
+#   JSON pretty-printé avec compteurs et erreurs éventuelles.
+```
