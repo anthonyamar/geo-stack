@@ -1,0 +1,13 @@
+---
+description: JavaScript (jsbundling-rails + esbuild, Stimulus/Turbo, ESLint, no inline JS)
+globs: "app/javascript/**/*.{js,ts}"
+alwaysApply: false
+---
+
+# JavaScript
+
+- This app uses `jsbundling-rails` + esbuild + Yarn (see `package.json` and builds under `app/assets/builds`).
+- Stimulus controllers live under `app/javascript/controllers/`. Keep controllers thin, data-attribute-driven, and page-scoped.
+- Use Turbo for navigation and streams.
+- ESLint: follow project rules when editing JS (`yarn lint`).
+- No inline JavaScript in ERB for behavior — use Stimulus actions or dedicated bundles.

@@ -1,0 +1,18 @@
+---
+description: Conventions Rails (MVC, ViewComponent, callbacks, sécurité, ActiveJob/Solid Queue)
+globs: "app/**/*.rb"
+alwaysApply: false
+---
+
+# Rails architecture
+
+- Follow REST routing and classic MVC layout (`app/models`, `controllers`, `views`, `jobs`, `concerns`, etc.).
+- Naming: `snake_case` files and methods; `CamelCase` classes/modules. Prefer compact nesting: `class Foo::Bar` not nested `module`/`class` blocks. Avoid nested classes except tiny error classes or small value objects.
+- Service objects: see **`services`** rule (`app/services/**/*.rb`).
+- ViewComponent: e.g. `app/components/admin/dive_site/edit_component.rb`. Prefer components over partials when a reusable UI unit exists; use `--sidecar` so templates and `.yml` live next to the component.
+- Shared behavior: `concerns` in models/controllers.
+- ActiveRecord models: **no callbacks** (`before_*`, `after_*`, `around_*` on `ApplicationRecord` subclasses). Put side effects and guards in services, controllers, or jobs. `counter_cache` on `belongs_to` is fine; do not add custom callback hooks to compensate. Controller `before_action` is fine.
+- Don't use any default_scope in models, nor hardcoded orders at the relationship declaration level. Prefer create a scope if the kind of query is used multiple time, or add it once to the the code like "Model.where(active: true)" for example.
+- Authorization / auth: respect existing patterns (Devise, Pundit, etc.). Strong parameters in controllers; protect CSRF, XSS, mass assignment.
+- Files: use ActiveStorage as the app already does.
+- Heavy work: enqueue **ActiveJob** jobs backed by **Solid Queue** (see stack rule and app config).

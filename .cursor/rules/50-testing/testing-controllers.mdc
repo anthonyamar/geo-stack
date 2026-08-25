@@ -1,0 +1,23 @@
+---
+description: Tests Minitest pour `test/controllers` (HTTP, Turbo, auth)
+globs: "test/controllers/**/*_test.rb"
+alwaysApply: false
+---
+
+# Tests — `test/controllers`
+
+## Role
+
+- Exercise HTTP entry points: status, redirects, assigns, `flash`, cookie behavior, and Turbo responses (`format.turbo_stream`) when relevant.
+
+## Strategy
+
+- Per action: success (200/302/303 per convention) and business failure (422/403/404) — maximize surface to catch silent 500s.
+- Auth/scope: simulate expected user/role (`sign_in`, project helpers) without duplicating policy suites if a dedicated layer exists.
+- Assigns/scope: assert main instance variables via `assigns(...)` when they encode scope/authorization.
+- Params: cover nominal path; assert invalid params are rejected clearly — not every combination.
+- Don’t re-test every `before_action` everywhere if covered elsewhere — useful signal is “this action does not 500”.
+
+## Integration vs controller
+
+- If complex logic lives in a service: controller test asserts delegation + response; business detail belongs in `test/services`.

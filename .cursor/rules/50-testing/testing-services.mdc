@@ -1,0 +1,21 @@
+---
+description: Tests Minitest pour `test/services` (transactions métier, stubs d’externes)
+globs: "test/services/**/*_test.rb"
+alwaysApply: false
+---
+
+# Tests — `test/services`
+
+Implementation conventions (`ApplicationService`, `save_records`, `true`/`false` from `#call`) are in **`20-rails/services.mdc`**.
+
+## Role
+
+- Services encapsulate business transactions: multiple models, coordinated external calls, side effects (mail, jobs).
+
+## Strategy
+
+1. Happy path: expected outcome, correct persistence (minimal DB assertions: counts, key attributes).
+2. Failure: assert `#call` returns `false` (or raised error when the service documents an exceptional path); one example per handled failure class. Prefer exercising `save_records` rollback via bang persistence APIs.
+3. Light edges only when the code is present and risky (guards, early return).
+4. External collaborators (Stripe/HTTP/etc.): stub; assert arguments + single call; avoid duplicating `test/apis`.
+5. Idempotency/locks: add a focused test only if the code claims it.

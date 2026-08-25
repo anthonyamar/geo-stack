@@ -1,0 +1,21 @@
+---
+description: Style Ruby (RuboCop, single quotes, blocks it, exceptions)
+globs: "**/*.rb"
+alwaysApply: false
+---
+
+# Ruby style
+
+- Follow the [Ruby Style Guide](https://rubystyle.guide/) and **`.rubocop.yml`**.
+- Use **single-quoted** strings unless interpolation is required.
+- Prefer expressive Ruby (`unless`, `||=`, `&.`, pattern matching / modern syntax when it clarifies intent — Ruby 4.0.1).
+- Blocks: follow RuboCop; use `&:` when clear (`map(&:id)`). You may use `it` in blocks when it reads better than a single-letter name; use a named block parameter when `it` hurts clarity.
+
+```ruby
+titles = records.map(&:title)
+items.map { it.normalized_title }
+aggregates.sum { |row| row.price * row.quantity }
+```
+
+- Use exceptions for exceptional paths, not ordinary control flow. Log and handle errors in controllers/services appropriately.
+- Declare **`attr_reader` at the top of the class** (after constants and `class_attribute`, before `initialize` and instance methods). Never place `attr_reader` below a `private` section — group all readers together at the top of the file.

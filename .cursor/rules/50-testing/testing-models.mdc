@@ -1,0 +1,22 @@
+---
+description: Tests Minitest pour `test/models` (ActiveRecord, scopes, validations)
+globs: "test/models/**/*_test.rb"
+alwaysApply: false
+---
+
+# Tests — `test/models`
+
+## Role
+
+- Document the persisted contract: associations, scopes, validations, domain instance methods.
+
+## Strategy (recommended order)
+
+1. Scopes: assert on stable result sets (minimal factory data).
+2. Validations: prefer Shoulda matchers to reduce noise.
+3. Instance methods: start with predicates/state rules; then derived calculations.
+4. Side effects: assert observable outcomes (enqueued job, column) via services/controllers/jobs — not model callbacks.
+
+## Factories
+
+- Use factories; when new required columns land, update factories rather than bypassing validations.

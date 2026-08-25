@@ -1,0 +1,13 @@
+---
+description: Langue et i18n (code en anglais, textes via I18n, conventions YAML)
+alwaysApply: true
+---
+
+# Language and i18n
+
+- Chat/specs may be in French; **all code must be in English**: identifiers, comments, test names, user-facing strings committed in code.
+- **Views**: no hardcoded user-facing copy — use **I18n**. Prefer **lazy keys** (e.g. `t('.title')`) and use fully-qualified keys only when needed.
+- **Models (validations)**: when a custom string is needed, use **`I18n.t('…')` directly** in `message:`. Do not wrap `I18n.t` in a `proc`/lambda. Omit `message:` when Rails’ built-in wording is fine.
+- **Locale YAML**:
+  - Keep **top-level keys sorted alphabetically (A → Z)**.
+  - Wrap **all string values** in **double quotes**: `key: "value"`.

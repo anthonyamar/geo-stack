@@ -1,0 +1,17 @@
+---
+description: Tests Minitest pour `test/helpers` (helpers de vues)
+globs: "test/helpers/**/*_test.rb"
+alwaysApply: false
+---
+
+# Tests — `test/helpers`
+
+## Role
+
+- Verify view helpers: formatting, URL generation, escaped HTML fragments, display predicates.
+
+## Strategy
+
+- Include the helper in the project’s helper test case; call methods with minimal arguments without an HTTP cycle.
+- No DB unless unavoidable; prefer stubs.
+- For HTML: assert safety and presence of expected markup; avoid huge snapshot strings.

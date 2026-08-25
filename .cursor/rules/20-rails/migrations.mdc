@@ -1,0 +1,13 @@
+---
+description: Rails migrations (change, backfills SQL, commentaires en français au-dessus du SQL)
+globs:
+  - "db/migrate/**/*.rb"
+alwaysApply: false
+---
+
+# Migrations
+
+- Prefer `change` over `up` / `down`. In production we almost never roll back; we add follow-up migrations. Rollback is mainly for local dev when something fails.
+- Data backfills / fixes: use **SQL** (`execute`, etc.), not ActiveRecord models (`User.update_all`, `find_each`, …). Keep statements tight and index-friendly to reduce locks / long transactions.
+- Above every SQL statement: a **short, clear comment in French** so reviewers see intent and can sanity-check production behavior.
+- SQL that must run only on migrate-up inside `change`: use `up_only` so the rest of the migration stays reversible.

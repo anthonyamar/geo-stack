@@ -1,0 +1,18 @@
+---
+description: Données & perf (N+1, cache, index, PostGIS, recherche, jobs Solid Queue)
+globs:
+  - "app/**/*.rb"
+  - "app/**/*.{erb,html}"
+alwaysApply: false
+---
+
+# Data and performance
+
+Apply in controllers, services, ViewComponents, models, and views/component templates (fragment caching) anywhere under `app/` that loads or renders data.
+
+- Indexes: add/keep indexes that match real query patterns (see migrations and `schema.rb`).
+- N+1: prefer `preload` by default; use `includes` / `eager_load` only when a SQL join is explicitly required; use Bullet or logs in dev when in doubt.
+- Queries: narrow columns with `select`, use `joins` / scopes for clarity; use PostGIS when the domain needs geo queries.
+- Search: when relevant, leverage `pg_trgm`, fuzzy matching, and patterns already in the app (e.g. `pg_search`) — don’t invent parallel search stacks without need.
+- Caching: fragment / Russian doll where it pays off; avoid premature optimization.
+- Offload heavy work to background jobs (ActiveJob + Solid Queue), not request cycles.
