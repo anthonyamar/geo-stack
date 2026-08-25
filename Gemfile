@@ -2,77 +2,87 @@
 
 source 'https://rubygems.org'
 
-ruby '3.4.1'
+ruby '4.0.5'
 
-# Mandatory gems
-gem 'bootsnap', require: false
+# Backend
 gem 'pg', '~> 1.1'
 gem 'puma', '>= 5.0'
-gem 'rails', '~> 8.0.2'
+gem 'rails', '~> 8.1'
+
+# Jobs
+gem 'mission_control-jobs'
+gem 'solid_queue', '~> 1.2'
+
+# Frontend and JavaScript
+gem 'jsbundling-rails'
 gem 'sprockets-rails'
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-# Assets
-gem 'image_processing', '~> 1.2'
-gem 'importmap-rails'
-gem 'terser'
-
-# Hotwire ecosystem
 gem 'stimulus-rails'
+gem 'tailwindcss-rails', '~> 4.2'
 gem 'turbo-rails'
 
-# Front end
+# Design patterns
 gem 'draper'
-gem 'tailwindcss-rails', '~> 4.2'
+gem 'jbuilder'
 gem 'view_component'
 
-# Geo services
-gem 'activerecord-postgis-adapter'
-gem 'geocoder'
+# Users
+gem 'devise'
+
+# Email
+gem 'resend'
+
+# Utilities
+gem 'bootsnap', require: false
+gem 'figaro'
+gem 'image_processing', '~> 1.2'
+gem 'kramdown'
+
+# Components
 gem 'mapbox-sdk'
 gem 'mapkick-rb'
-gem 'rgeo'
+gem 'pagy', '~> 43.0'
+
+# Geomatic using PostgreSQL with PostGIS [https://github.com/rgeo/rgeo]
+gem 'activerecord-postgis-adapter'
+gem 'geocoder'
+gem 'rgeo', '>= 3.1'
 gem 'rgeo-activerecord'
 
-# Search
+# Search & comparison
 gem 'jaro_winkler'
 gem 'pg_search'
 
-# Countries
+# Solution for managing countries, timezone and currencies [https://github.com/countries/countries]
 gem 'countries'
 gem 'money'
 gem 'restcountry'
 gem 'timezone'
+gem 'tzinfo-data', platforms: %i[jruby]
 
 # SEO
 gem 'friendly_id'
 gem 'sitemap_generator'
 
-# Other
-gem 'devise'
-gem 'figaro', git: "https://github.com/laserlemon/figaro"
-gem 'jbuilder'
-gem 'pagy'
-gem 'redis', '>= 4.0.1'
+# Error monitoring (optional — set BUGSNAG_API_KEY)
+gem 'bugsnag', '~> 6.30'
 
 group :development, :test do
   gem 'benchmark'
   gem 'bullet'
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'byebug', platforms: %i[mri]
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'pry-byebug'
   gem 'selenium-webdriver'
-  gem 'spring'
-  gem 'spring-watcher-listen'
 end
 
 group :development do
   gem 'annotaterb'
-  gem 'better_errors'
+  # gem 'better_errors' - Waiting for a fix of BindingOfCaller gem to work with Ruby 4
   gem 'binding_of_caller'
   gem 'brakeman', require: false
-  gem 'i18n-debug'
+  gem 'bundler-audit', require: false
+  gem 'letter_opener_web', '~> 3.0'
   gem 'meta_request'
   gem 'rails_devtools'
   gem 'web-console'
@@ -86,7 +96,7 @@ group :test do
   gem 'mocha'
   gem 'rails-controller-testing'
   gem 'rubocop', require: false
-  gem 'rubocop-rails-omakase', require: false
+  gem 'rubocop-rails', require: false
   gem 'shoulda'
   gem 'simplecov', require: false
 end

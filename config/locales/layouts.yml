@@ -1,0 +1,29 @@
+en:
+  layouts:
+    footer:
+      all_rights_reserved_html: "© %{year} %{name}. All rights reserved."
+      logo_alt: "Website logo"
+      made_with_love: "Made with love"
+    header:
+      aria_label: "Global"
+      close_menu: "Close menu"
+      logo_alt: "Website logo"
+      my_account: "My account"
+      open_menu: "Open main menu"
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+
+fr:
+  layouts:
+    footer:
+      all_rights_reserved_html: "© %{year} %{name}. Tous droits réservés."
+      logo_alt: "Logo du site"
+      made_with_love: "Fait avec amour"
+    header:
+      aria_label: "Global"
+      close_menu: "Fermer le menu"
+      logo_alt: "Logo du site"
+      my_account: "Mon compte"
+      open_menu: "Ouvrir le menu"
+      sign_in: "Connexion"
+      sign_up: "Inscription"

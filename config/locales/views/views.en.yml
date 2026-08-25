@@ -11,6 +11,7 @@ en:
         already_member: "Already a member?"
         forgot_password: "Forgot password?"
         sign_in: "Sign in"
+        logo_alt: "Website logo"
     passwords:
       edit:
         title: "Change your password"
@@ -18,11 +19,13 @@ en:
         new_password_confirmation: "New password confirmation"
         change_my_password: "Change my password"
         password_placeholder: "********"
+        logo_alt: "Website logo"
       new:
         title: "Forgot password?"
         email: "Email address"
         email_placeholder: "email@example.com"
         send_me_reset_password_instructions: "Send me reset password instructions"
+        logo_alt: "Website logo"
     registrations:
       edit:
         title: "Edit your account"
@@ -31,6 +34,7 @@ en:
         new_password_confirmation: "Confirm new password"
         edit_my_account: "Edit my account"
         sign_out: "Sign out"
+        cancel_my_account: "Cancel my account"
         cancel_confirmation: "Are you sure you want to cancel your account ?"
       new:
         title: "Sign up"
@@ -38,6 +42,9 @@ en:
         email_placeholder: "email@example.com"
         password: "Password"
         password_placeholder: "**********"
+        sign_up: "Sign up"
+        already_member: "Already a member?"
+        logo_alt: "Website logo"
     sessions:
       new:
         title: "Login"
@@ -48,6 +55,7 @@ en:
         sign_in: "Sign in"
         forgot_password: "Forgot password?"
         sign_up_for_free: "Sign up for free!"
+        logo_alt: "Website logo"
     shared:
       links:
         already_member: "Already a member?"

@@ -29,7 +29,7 @@ Rails.application.configure do
 
   # Compress CSS using a preprocessor.
   config.assets.css_compressor = nil # Important pour Tailwind
-  config.assets.js_compressor = :terser
+  config.assets.js_compressor = nil
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
@@ -82,13 +82,16 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  # config.active_job.queue_adapter     = :resque
+  config.active_job.queue_adapter = :solid_queue
   # config.active_job.queue_name_prefix = "geo_stack_production"
 
   config.action_mailer.perform_caching = false
 
-  # Added during the Devise installation. Need to be changed by the right URL once knowned.
-  config.action_mailer.default_url_options = { host: 'www.example.com', port: 3000 }
+  config.action_mailer.delivery_method = :resend
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: GeoStack::DOMAIN, protocol: "https" }
+  config.action_mailer.asset_host = "https://#{GeoStack::DOMAIN}"
+  config.action_controller.default_url_options = { host: GeoStack::DOMAIN, protocol: "https" }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

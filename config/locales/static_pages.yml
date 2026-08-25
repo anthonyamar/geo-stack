@@ -1,0 +1,37 @@
+en:
+  static_pages:
+    contact:
+      subtitle: "Send a message. Replace WEBSITE_CONTACT_EMAIL before going live."
+      title: "Contact"
+    create_contact:
+      failure: "Your message could not be sent. Please check the form and try again."
+      success: "Your message has been sent."
+    home:
+      body: "Geo stack is an opinionated Rails stack to build a modern website without configuration hell. It includes tools for geo-related features and fuzzy search."
+      cta: "Get in touch"
+      meta_description: "Opinionated Rails geo stack"
+      meta_title: "Home"
+      title_html: "Start your <span class=\"text-main-sky\">coding</span> journey <span class=\"text-orange-accent\">today</span>."
+    privacy_policy:
+      title: "Privacy Policy"
+    terms:
+      title: "Terms of Use"
+
+fr:
+  static_pages:
+    contact:
+      subtitle: "Envoyez un message. Remplacez WEBSITE_CONTACT_EMAIL avant la mise en production."
+      title: "Contact"
+    create_contact:
+      failure: "Votre message n'a pas pu être envoyé. Vérifiez le formulaire et réessayez."
+      success: "Votre message a été envoyé."
+    home:
+      body: "Geo stack est une stack Rails opiniâtre pour construire un site moderne sans se battre avec la configuration. Elle inclut des outils pour le géospatial et la recherche floue."
+      cta: "Nous contacter"
+      meta_description: "Stack Rails géospatiale opiniâtre"
+      meta_title: "Accueil"
+      title_html: "Commencez votre aventure <span class=\"text-main-sky\">code</span> <span class=\"text-orange-accent\">aujourd'hui</span>."
+    privacy_policy:
+      title: "Politique de confidentialité"
+    terms:
+      title: "Conditions d'utilisation"

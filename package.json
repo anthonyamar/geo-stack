@@ -1,20 +1,30 @@
 {
-  "name": "dive-sites-finder",
+  "name": "geo-stack",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:anthonyamar/dive-sites-finder.git",
+  "repository": "git@github.com:anthonyamar/geo-stack.git",
   "author": "anthonyamar <anthonyamar@labodessons.fr>",
   "license": "MIT",
+  "engines": {
+    "node": ">=22.0.0 <26.0.0"
+  },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.0.0",
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^8.0.16",
+    "@tailwindcss/typography": "^0.5.20",
     "autoprefixer": "^10.4.20",
-    "daisyui": "^5.0.4"
+    "daisyui": "^5.0.4",
+    "esbuild": "^0.28.1"
   },
   "scripts": {
     "lint": "yarn run eslint app/javascript",
-    "lint:fix": "yarn run eslint app/javascript --fix"
+    "lint:fix": "yarn run eslint app/javascript --fix",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets --asset-names=[name]-[hash].digested --loader:.png=file --loader:.jpg=file --loader:.jpeg=file --loader:.gif=file --loader:.svg=file --loader:.woff=file --loader:.woff2=file --loader:.ttf=file --loader:.eot=file"
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
+    "@babel/core": "^7.29.7",
+    "@babel/eslint-parser": "^7.29.7",
     "eslint": "^8.2.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-prettier": "^10.0.1",
@@ -22,5 +32,12 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-prettier": "^5.2.3",
     "prettier": "^3.4.2"
+  },
+  "resolutions": {
+    "ajv": "^6.14.0",
+    "brace-expansion": "^1.1.18",
+    "flatted": "^3.4.2",
+    "js-yaml": "^4.3.0",
+    "minimatch": "^3.1.4"
   }
 }

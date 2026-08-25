@@ -1,0 +1,33 @@
+en:
+  users:
+    mailer:
+      confirmation_instructions:
+        action: "Confirm my account"
+        greeting: "Welcome %{email}!"
+        instruction: "You can confirm your account email through the link below:"
+      password_change:
+        body: "We're contacting you to notify you that your password has been changed."
+        greeting: "Hello %{email}!"
+      reset_password_instructions:
+        action: "Change my password"
+        greeting: "Hello %{email}!"
+        ignore: "If you didn't request this, please ignore this email."
+        instruction: "Someone has requested a link to change your password. You can do this through the link below."
+        no_change: "Your password won't change until you access the link above and create a new one."
+
+fr:
+  users:
+    mailer:
+      confirmation_instructions:
+        action: "Confirmer mon compte"
+        greeting: "Bienvenue %{email} !"
+        instruction: "Vous pouvez confirmer votre adresse e-mail via le lien ci-dessous :"
+      password_change:
+        body: "Nous vous contactons pour vous informer que votre mot de passe a été modifié."
+        greeting: "Bonjour %{email} !"
+      reset_password_instructions:
+        action: "Changer mon mot de passe"
+        greeting: "Bonjour %{email} !"
+        ignore: "Si vous n'avez pas fait cette demande, ignorez cet e-mail."
+        instruction: "Une demande de réinitialisation de mot de passe a été faite. Vous pouvez le faire via le lien ci-dessous."
+        no_change: "Votre mot de passe ne changera pas tant que vous n'aurez pas ouvert le lien et créé un nouveau mot de passe."

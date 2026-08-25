@@ -1,0 +1,66 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require "open3"
+require "pathname"
+
+APP_ROOT = Pathname.new(__dir__).join("..").expand_path
+
+# Yarn/npm advisory DB still lists GHSA-mh99 as "patched >=5.0.8" only, so every
+# 1.x/2.x/3.x install looks vulnerable. Upstream patched each major line; ignore
+# findings already on a patched release. Remove once the advisory ranges catch up.
+# https://github.com/juliangruber/brace-expansion/security/advisories/GHSA-mh99-v99m-4gvg
+PATCHED_BRACE_EXPANSION = [
+  Gem::Requirement.new("~> 1.1", ">= 1.1.17"),
+  Gem::Requirement.new("~> 2.1", ">= 2.1.3"),
+  Gem::Requirement.new("~> 3.0", ">= 3.0.3"),
+  Gem::Requirement.new(">= 5.0.8")
+].freeze
+
+def patched_brace_expansion?(version)
+  gem_version = Gem::Version.new(version)
+  PATCHED_BRACE_EXPANSION.any? { it.satisfied_by?(gem_version) }
+end
+
+def brace_expansion_false_positive?(advisory)
+  return false unless advisory.dig("advisory", "github_advisory_id") == "GHSA-mh99-v99m-4gvg"
+  return false unless advisory.dig("advisory", "module_name") == "brace-expansion"
+
+  versions = advisory.dig("advisory", "findings").to_a.filter_map { it["version"] }
+  versions.any? && versions.all? { patched_brace_expansion?(it) }
+end
+
+Dir.chdir(APP_ROOT) do
+  stdout, stderr, status = Open3.capture3("yarn", "audit", "--json", "--level", "moderate")
+  $stderr.write(stderr)
+
+  actionable = []
+  stdout.each_line do |line|
+    payload = JSON.parse(line)
+    next unless payload["type"] == "auditAdvisory"
+    next if brace_expansion_false_positive?(payload["data"])
+
+    actionable << payload["data"]
+    advisory = payload.dig("data", "advisory") || {}
+    resolution = payload.dig("data", "resolution") || {}
+    puts <<~MSG
+      ┌───────────────┬──────────────────────────────────────────────────────────────┐
+      │ #{advisory["severity"].to_s.ljust(13)} │ #{advisory["title"].to_s[0, 60].ljust(60)} │
+      ├───────────────┼──────────────────────────────────────────────────────────────┤
+      │ Package       │ #{advisory["module_name"]}
+      │ Patched in    │ #{advisory["patched_versions"]}
+      │ Path          │ #{resolution["path"]}
+      │ More info     │ #{advisory["url"]}
+      └───────────────┴──────────────────────────────────────────────────────────────┘
+    MSG
+  end
+
+  if actionable.empty?
+    puts "No moderate+ vulnerabilities found (after known advisory-range false positives)."
+    exit 0
+  end
+
+  puts "#{actionable.size} moderate+ vulnerabilit#{actionable.size == 1 ? 'y' : 'ies'} found"
+  exit(status.exitstatus.nonzero? || 1)
+end

@@ -1,11 +1,8 @@
-inherit_gem:
-  rubocop-rails-omakase: rubocop.yml
-
-plugins:
-  - rubocop-rails
+require: rubocop-rails
 
 AllCops:
   NewCops: enable
+  SuggestExtensions: false
   Exclude:
     - Gemfile
     - bin/*
@@ -28,6 +25,14 @@ Layout/MultilineMethodCallIndentation:
 Layout/SpaceInsideArrayLiteralBrackets:
   EnforcedStyle: no_space
 
+Lint/MissingSuper:
+  Enabled: true
+  Exclude:
+    - 'app/components/**/*'
+
+Lint/UselessConstantScoping:
+  Enabled: false
+
 Metrics/AbcSize:
   Enabled: false
 
@@ -35,7 +40,11 @@ Metrics/ClassLength:
   Enabled: false
 
 Metrics/CyclomaticComplexity:
-  Enabled: false
+  Enabled: true
+  Max: 10
+  Exclude:
+    - 'test/**/*'
+    - 'db/migrate/**/*'
 
 Metrics/BlockLength:
   Enabled: false
@@ -48,6 +57,23 @@ Metrics/MethodLength:
 
 Rails/Output:
   Enabled: false
+
+Rails/BulkChangeTable:
+  Enabled: false
+
+Rails/ReversibleMigration:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: true
+  Exclude:
+    - 'db/migrate/**/*'
+
+Rails/I18nLocaleAssignment:
+  Enabled: true
+  Exclude:
+    - 'test/**/*'
+    - 'db/migrate/**/*'
 
 Style/SafeNavigationChainLength:
   Enabled: false
@@ -84,4 +110,7 @@ Style/ClassAndModuleChildren:
   EnforcedStyle: compact
 
 Style/CommentAnnotation:
+  Enabled: false
+
+Style/OpenStructUse:
   Enabled: false

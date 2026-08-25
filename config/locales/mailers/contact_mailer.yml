@@ -1,0 +1,15 @@
+en:
+  contact_mailer:
+    inquiry:
+      from: "From"
+      greeting: "New contact form message"
+      message: "Message"
+      subject: "Contact form from %{name}"
+
+fr:
+  contact_mailer:
+    inquiry:
+      from: "De"
+      greeting: "Nouveau message via le formulaire de contact"
+      message: "Message"
+      subject: "Formulaire de contact de %{name}"

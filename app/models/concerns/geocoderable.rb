@@ -27,12 +27,12 @@ module Geocoderable
     return @struct if defined?(@struct)
 
     @struct = if geocoder_data.present?
-      deep_open_struct(geocoder_data.deep_symbolize_keys)
-    elsif store_geocoder_data
-      deep_open_struct(fetch_and_store_geocoder_data.deep_symbolize_keys)
-    else
-      {}
-    end
+                deep_open_struct(geocoder_data.deep_symbolize_keys)
+              elsif store_geocoder_data
+                deep_open_struct(fetch_and_store_geocoder_data.deep_symbolize_keys)
+              else
+                {}
+              end
 
     @struct
   end
@@ -45,14 +45,12 @@ module Geocoderable
 
     geocoder_info = result.data.deep_symbolize_keys
 
-    # rubocop:disable Rails/SkipsModelValidations
     if new_record?
       self.geocoder_data = geocoder_info
       save!
     else
-      update_column(:geocoder_data, geocoder_info)
+      update_column(:geocoder_data, geocoder_info) # rubocop:disable Rails/SkipsModelValidations
     end
-    # rubocop:enable Rails/SkipsModelValidations
 
     geocoder_info
   end
@@ -63,7 +61,6 @@ module Geocoderable
     fetch_and_store_geocoder_data
   end
 
-  # rubocop:disable Style/OpenStructUse
   def deep_open_struct(obj)
     case obj
     when Hash
@@ -74,5 +71,4 @@ module Geocoderable
       obj
     end
   end
-  # rubocop:enable Style/OpenStructUse
 end

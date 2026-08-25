@@ -37,13 +37,19 @@ Rails.application.configure do
   # Store uploaded files on the local file system in a temporary directory.
   config.active_storage.service = :test
 
+  # In-memory job adapter for tests (assert_enqueued_with, perform_enqueued_jobs)
+  config.active_job.queue_adapter = :test
+
   config.action_mailer.perform_caching = false
 
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+
+  # Default so contact mailer tests can fetch a recipient.
+  ENV["WEBSITE_CONTACT_EMAIL"] ||= "team@#{GeoStack::DOMAIN}"
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr

@@ -1,0 +1,14 @@
+<div class="dropdown dropdown-end">
+  <div tabindex="0" role="button" class="text-sm font-semibold leading-6 text-base-content py-3 inline-flex items-center"
+       aria-haspopup="listbox" aria-label="<%= t('nav.language_switcher.label') %> (<%= current_locale_label %>)">
+    <i class="fa-solid fa-language text-lg" aria-hidden="true"></i>
+  </div>
+  <ul tabindex="0" role="listbox" class="menu dropdown-content bg-base-200 z-50 mt-4 w-44 p-2 shadow-sm rounded-box">
+    <li role="option" aria-selected="<%= I18n.locale == :en %>">
+      <%= link_to t('nav.locale.en'), locale_switch_path(:en), class: (I18n.locale == :en ? "active font-semibold" : nil) %>
+    </li>
+    <li role="option" aria-selected="<%= I18n.locale == :fr %>">
+      <%= link_to t('nav.locale.fr'), locale_switch_path(:fr), class: (I18n.locale == :fr ? "active font-semibold" : nil) %>
+    </li>
+  </ul>
+</div>

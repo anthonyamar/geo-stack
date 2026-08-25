@@ -1,0 +1,8 @@
+# Optional environment variables for a new project.
+# Copy to config/application.yml or set them in Coolify.
+
+# RESEND_API_KEY:
+# WEBSITE_CONTACT_EMAIL: humans@example.com
+# BUGSNAG_API_KEY:
+# MISSION_CONTROL_HTTP_BASIC_USERNAME:
+# MISSION_CONTROL_HTTP_BASIC_PASSWORD:

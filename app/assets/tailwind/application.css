@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @theme {
   --color-light-sky: #F0F9FF;
   --color-main-sky: #0EA5E9;
@@ -12,10 +13,10 @@
 }
 
 @plugin "daisyui" {
-  themes: ["custom-theme"];
+  themes: ["user-theme", "user-theme-dark"];
 }
 @plugin "daisyui/theme" {
-  name: "custom-theme";
+  name: "user-theme";
   default: true; /* set as default */
   prefersdark: false; /* set as default dark mode (prefers-color-scheme:dark) */
   color-scheme: light; /* color of browser-provided UI */
@@ -32,22 +33,83 @@
   --color-accent-content: oklch(21% 0.006 285.885);
   --color-neutral: oklch(14% 0.005 285.823);
   --color-neutral-content: oklch(92% 0.004 286.32);
-  --color-info: oklch(97% 0.013 236.62);
+  --color-info: oklch(80% 0.126 221.723);
   --color-info-content: oklch(29% 0.066 243.157);
-  --color-success: oklch(87% 0.15 154.449);
+  --color-success: oklch(65% 0.15 154.449);
   --color-success-content: oklch(37% 0.077 168.94);
   --color-warning: #FFC533;
   --color-warning-content: oklch(21% 0.006 285.885);
-  --color-error: oklch(81% 0.117 11.638);
+  --color-error: oklch(0.7294 0.185 24);
   --color-error-content: oklch(28% 0.109 3.907);
   --radius-selector: 2rem;
   --radius-field: 0.5rem;
-  --radius-box: 2rem;
+  --radius-box: 0.5rem;
   --size-selector: 0.28125rem;
   --size-field: 0.28125rem;
   --border: 1px;
   --depth: 0;
   --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "user-theme-dark";
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: oklch(22% 0.03 240);
+  --color-base-200: oklch(18% 0.025 240);
+  --color-base-300: oklch(28% 0.03 240);
+  --color-base-content: oklch(93% 0.01 230);
+  --color-primary: #0ea5e9;
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(28% 0.04 230);
+  --color-secondary-content: oklch(85% 0.08 220);
+  --color-accent: #FFC533;
+  --color-accent-content: oklch(22% 0.03 240);
+  --color-neutral: oklch(90% 0.01 230);
+  --color-neutral-content: oklch(22% 0.03 240);
+  --color-info: oklch(70% 0.12 230);
+  --color-info-content: oklch(25% 0.05 240);
+  --color-success: oklch(70% 0.14 155);
+  --color-success-content: oklch(25% 0.05 155);
+  --color-warning: #FFC533;
+  --color-warning-content: oklch(22% 0.03 240);
+  --color-error: oklch(0.7 0.18 24);
+  --color-error-content: oklch(98% 0.01 24);
+  --radius-selector: 2rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.28125rem;
+  --size-field: 0.28125rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+/* Map Tailwind `dark:` to DaisyUI dark theme (not prefers-color-scheme alone). */
+@custom-variant dark (&:where([data-theme=user-theme-dark], [data-theme=user-theme-dark] *));
+
+/*
+  ponytail: remaps legacy brand/gray utilities so dark mode works without rewriting
+  every template. Upgrade path: migrate call sites to base-* / base-content tokens.
+*/
+[data-theme="user-theme-dark"] {
+  --color-dark-blue: oklch(93% 0.015 230);
+  --color-light-sky: oklch(26% 0.035 240);
+  --color-gray-50: oklch(18% 0.025 240);
+  --color-gray-100: oklch(22% 0.03 240);
+  --color-gray-200: oklch(30% 0.025 240);
+  --color-gray-300: oklch(38% 0.02 240);
+  --color-gray-400: oklch(55% 0.015 240);
+  --color-gray-500: oklch(68% 0.015 230);
+  --color-gray-600: oklch(78% 0.012 230);
+  --color-gray-700: oklch(85% 0.01 230);
+  --color-gray-800: oklch(90% 0.008 230);
+  --color-gray-900: oklch(95% 0.006 230);
+  --color-slate-100: oklch(22% 0.03 240);
+  --color-neutral-700: oklch(85% 0.01 230);
+  --color-neutral-800: oklch(90% 0.008 230);
 }
 
 @layer base {
@@ -59,6 +121,9 @@
     border-color: var(--color-gray-200, currentColor);
   }
 }
+
+@import "../stylesheets/ui/pagination.css";
+@import "../stylesheets/components/article_wrapper_component.css";
 
 .heading-1 {
   @apply text-4xl font-serif font-bold tracking-wide text-dark-blue sm:text-6xl;
@@ -77,38 +142,13 @@
 }
 
 .link {
-  @apply font-medium text-main-sky hover:text-orange-accent whitespace-nowrap underline;
+  @apply font-medium text-main-sky underline hover:text-orange-accent;
 }
 
 .link-arrow {
   @apply text-sm font-semibold leading-6 text-main-sky hover:text-orange-accent;
 }
 
-/* PAGINATION'S GEM PAGY */
-.pagy-nav.pagination {
-  @apply isolate inline-flex -space-x-px rounded-md;
-}
-
-.page.next a {
-  @apply relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20;
-}
-
-.page.prev a {
-  @apply relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20;
-}
-
-.page.next.disabled {
-  @apply relative inline-flex items-center rounded-r-md border border-gray-300 bg-slate-100 px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20;
-}
-
-.page.prev.disabled {
-  @apply relative inline-flex items-center rounded-l-md border border-gray-300 bg-slate-100 px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20;
-}
-
-.page a, .page.gap {
-  @apply bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center border px-4 py-2 text-sm font-medium focus:z-20;
-}
-
-.page.active {
-  @apply z-10 border-sky-500 bg-sky-100 text-sky-600 relative inline-flex items-center border px-4 py-2 text-sm font-medium focus:z-20;
+.required {
+  @apply after:content-['*'] after:ml-0.5 after:text-red-500;
 }

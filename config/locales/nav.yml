@@ -1,0 +1,21 @@
+en:
+  nav:
+    contact: "Contact"
+    language_switcher:
+      label: "Language"
+    locale:
+      en: "English"
+      fr: "Français"
+    privacy_policy: "Privacy Policy"
+    terms: "Terms of Use"
+
+fr:
+  nav:
+    contact: "Contact"
+    language_switcher:
+      label: "Langue"
+    locale:
+      en: "English"
+      fr: "Français"
+    privacy_policy: "Politique de confidentialité"
+    terms: "Conditions d'utilisation"

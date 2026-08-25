@@ -34,7 +34,7 @@ FactoryBot.define do
     password_confirmation { "password123" }
 
     trait :confirmed do
-      confirmed_at { Time.now }
+      confirmed_at { Time.current }
     end
   end
 end

@@ -27,14 +27,12 @@ class GeocoderableTest < ActiveSupport::TestCase
     assert @other_record.geocoder_data.present?
   end
 
-  # rubocop:disable Style:OpenStructUse
   test "should output a deep OpenStruct object with geocoder_data" do
     assert @record.save(store_geocoder_data: true)
     assert @record.geocoder_object.is_a?(OpenStruct)
     assert_equal @record.geocoder_data["place_id"], @record.geocoder_object.place_id
     assert_equal @record.geocoder_data["address"]["city"], @record.geocoder_object.address.city
   end
-  # rubocop:enable Style:OpenStructUse
 
   test "validates lonlat presence" do
     @record.lonlat = nil

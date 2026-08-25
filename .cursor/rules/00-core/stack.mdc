@@ -1,0 +1,17 @@
+---
+description: Stack du projet (Rails 8.1, Ruby 4.0.5, Postgres/PostGIS, Hotwire, Solid Queue, Tailwind 4 + DaisyUI)
+alwaysApply: true
+---
+
+# Stack
+
+- **Ruby 4.0.5** + **Rails 8.1** (see `Gemfile`).
+- **PostgreSQL** + **PostGIS** for geo queries; prefer database-native approaches when relevant.
+- **Background jobs**: **ActiveJob** backed by **Solid Queue** (see `config/application.rb`, `config/puma.rb`).
+- **Hotwire**: Turbo + Stimulus; prefer server-driven UI over bespoke JS.
+- **CSS**: **Tailwind CSS 4** + **DaisyUI 5** (see `package.json`).
+- **Assets / JS**: Sprockets + **jsbundling-rails** (**esbuild**) + **Yarn**. Use the existing build pipeline and conventions already in the repo.
+
+Linting:
+- Ruby: `.rubocop.yml`
+- JS: ESLint (`yarn lint`)

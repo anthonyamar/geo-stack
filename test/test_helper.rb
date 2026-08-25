@@ -1,30 +1,74 @@
 # frozen_string_literal: true
 
-require "minitest/reporters"
-require "simplecov"
+# Quiet third-party warnings (shoulda-matchers frozen string) for a clean test output
+$VERBOSE = nil
+
 ENV["RAILS_ENV"] ||= "test"
+
+if ENV["COVERAGE"]
+  require "simplecov"
+  SimpleCov.start "rails" do
+    add_filter "/test/"
+
+    if ENV["PARALLEL_WORKERS"]
+      SimpleCov.command_name "rails_test_#{ENV["PARALLEL_WORKERS"]}"
+    else
+      SimpleCov.command_name "rails_test"
+    end
+
+    SimpleCov.use_merging true
+    SimpleCov.merge_timeout 3600
+    SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
+  end
+end
+
 require_relative "../config/environment"
 require "rails/test_help"
-require 'capybara/rails'
-require 'capybara/minitest'
+require_relative "support/parallelization_shutdown_timeout"
+require "minitest/reporters"
 
-SimpleCov.start
-Minitest::Reporters.use! Minitest::Reporters::ProgressReporter.new
+Minitest::Reporters.use!(
+  Minitest::Reporters::ProgressReporter.new,
+  ENV,
+  Minitest.backtrace_filter
+)
+Minitest.load :minitest_reporter
+
+Rails::TestUnitReporter.class_eval do
+  def format_rerun_snippet(result)
+    location, line =
+      if result.respond_to?(:source_location)
+        result.source_location
+      else
+        result.method(result.name).source_location
+      end
+    "#{self.class.executable} #{relative_path_for(location)}:#{line}"
+  end
+end
+
+require "capybara/rails"
+require "capybara/minitest"
 
 require "database_cleaner/active_record"
 DatabaseCleaner.strategy = :truncation, { except: ["spatial_ref_sys"] }
 DatabaseCleaner.clean_with :truncation, { except: ["spatial_ref_sys"] }
 
 class ActiveSupport::TestCase
-  # Run tests in parallel with specified workers
-  parallelize(workers: :number_of_processors)
-  setup { DatabaseCleaner.start }
-  teardown { DatabaseCleaner.clean }
+  parallelize(workers: :number_of_processors) unless ENV["COVERAGE"]
 
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+  Timezone::Lookup.config(:test).default("Europe/Paris")
+
+  setup do
+    DatabaseCleaner.start
+    ActiveStorage::Current.url_options = { host: "test.host" }
+    I18n.locale = I18n.default_locale
+  end
+  teardown do
+    DatabaseCleaner.clean
+  end
+
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
   include FactoryBot::Syntax::Methods
 
   def normalize_json(json)
@@ -34,15 +78,16 @@ end
 
 class ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
-  # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
-  # Make `assert_*` methods behave like Minitest assertions
   include Capybara::Minitest::Assertions
 
-  # Reset sessions and driver between tests
   teardown do
     Capybara.reset_sessions!
     Capybara.use_default_driver
+  end
+
+  def skip_unless_devise_route!(route_name = :new_user_password)
+    skip "Devise routes are not available" unless Rails.application.routes.routes.any? { it.name == route_name.to_s }
   end
 end
 
