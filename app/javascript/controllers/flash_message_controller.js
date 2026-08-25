@@ -7,7 +7,8 @@ export default class extends Controller {
     }, 5000);
   }
 
-  close() {
+  close(event) {
+    event?.preventDefault();
     this.element.remove();
   }
 }

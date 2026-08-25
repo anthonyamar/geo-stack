@@ -1,0 +1,66 @@
+- generic [ref=e63]:
+  - banner [ref=e64]:
+    - navigation "Global" [ref=e65]:
+      - link "Your Website Name Website logo" [ref=e67] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e68]: Your Website Name
+        - img "Website logo" [ref=e69]
+      - generic [ref=e70]:
+        - link "Sign in" [ref=e71] [cursor=pointer]:
+          - /url: /users/sign_in
+        - link "Sign up" [ref=e72] [cursor=pointer]:
+          - /url: /users/sign_up
+          - text: Sign up
+          - generic [ref=e73]: →
+  - main [ref=e74]:
+    - alert [ref=e77]:
+      - generic [ref=e78]: Invalid email or password.
+      - button "Dismiss notification" [ref=e80] [cursor=pointer]
+    - generic [ref=e82]:
+      - generic [ref=e83]:
+        - img "Website logo" [ref=e84]
+        - heading "Login" [level=1] [ref=e85]
+      - generic [ref=e86]:
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - generic [ref=e89]: Email address
+            - textbox "email@example.com" [active] [ref=e91]: nobody@example.com
+          - generic [ref=e92]:
+            - generic [ref=e93]:
+              - generic [ref=e94]: Password
+              - link "Forgot password?" [ref=e96] [cursor=pointer]:
+                - /url: /users/password/new
+            - textbox "**********" [ref=e98]
+          - button "Sign in" [ref=e100] [cursor=pointer]
+        - paragraph [ref=e101]:
+          - text: Not a member yet?
+          - link "Sign up" [ref=e102] [cursor=pointer]:
+            - /url: /users/sign_up
+        - paragraph [ref=e103]:
+          - text: Didn't receive confirmation instructions?
+          - link "Confirmation instructions" [ref=e104] [cursor=pointer]:
+            - /url: /users/confirmation/new
+  - contentinfo [ref=e106]:
+    - generic [ref=e107]:
+      - link "Website logo Your Website Name" [ref=e109] [cursor=pointer]:
+        - /url: /
+        - img "Website logo" [ref=e110]
+        - generic [ref=e111]: Your Website Name
+      - generic [ref=e112]:
+        - list [ref=e113]:
+          - listitem [ref=e114]:
+            - link "Privacy Policy" [ref=e115] [cursor=pointer]:
+              - /url: /privacy-policy
+          - listitem [ref=e116]:
+            - link "Terms of Use" [ref=e117] [cursor=pointer]:
+              - /url: /terms
+          - listitem [ref=e118]:
+            - link "Contact" [ref=e119] [cursor=pointer]:
+              - /url: /contact
+        - button "Language (English)" [ref=e121]
+        - group "Color theme" [ref=e123]:
+          - button "System" [ref=e124] [cursor=pointer]
+          - button "Light" [ref=e126] [cursor=pointer]
+          - button "Dark" [pressed] [ref=e128] [cursor=pointer]
+    - separator [ref=e130]
+    - generic [ref=e131]: © 2026 Your Website Name. All rights reserved.

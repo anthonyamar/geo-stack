@@ -1,0 +1,1 @@
+[     350ms] Failed to register a ServiceWorker for scope ('http://127.0.0.1:3000/') with script ('http://127.0.0.1:3000/service-worker.js'): ServiceWorker script evaluation failed

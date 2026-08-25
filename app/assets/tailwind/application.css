@@ -54,7 +54,7 @@
 @plugin "daisyui/theme" {
   name: "user-theme-dark";
   default: false;
-  prefersdark: true;
+  prefersdark: false;
   color-scheme: dark;
 
   --color-base-100: oklch(22% 0.03 240);
@@ -93,8 +93,10 @@
 /*
   ponytail: remaps legacy brand/gray utilities so dark mode works without rewriting
   every template. Upgrade path: migrate call sites to base-* / base-content tokens.
+  html[data-theme] beats DaisyUI's :root / prefers-color-scheme rules (same spec).
 */
-[data-theme="user-theme-dark"] {
+html[data-theme="user-theme-dark"] {
+  color-scheme: dark;
   --color-dark-blue: oklch(93% 0.015 230);
   --color-light-sky: oklch(26% 0.035 240);
   --color-gray-50: oklch(18% 0.025 240);

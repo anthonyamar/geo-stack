@@ -1,0 +1,8 @@
+<div class='mt-16 mx-auto relative flex justify-between px-4 py-3 space-x-2 rounded w-full sm:w-1/2 <%= color_classes %>' role='alert'>
+  <div><%= message %></div>
+  <div class='pl-5'>
+    <button type="button" class="cursor-pointer" data-action="click->flash-message#close:prevent" aria-label="<%= t('.dismiss') %>">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>

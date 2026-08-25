@@ -1,0 +1,44 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation "Global" [ref=e3]:
+      - link "Your Website Name Logo du site" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: Your Website Name
+        - img "Logo du site" [ref=e7]
+      - generic [ref=e8]:
+        - link "Connexion" [ref=e9] [cursor=pointer]:
+          - /url: /users/sign_in
+        - link "Inscription" [ref=e10] [cursor=pointer]:
+          - /url: /users/sign_up
+          - text: Inscription
+          - generic [ref=e11]: →
+  - main [ref=e12]:
+    - generic [ref=e16]:
+      - heading "Commencez votre aventure code aujourd'hui." [level=1] [ref=e17]
+      - paragraph [ref=e18]: Geo stack est une stack Rails opiniâtre pour construire un site moderne sans se battre avec la configuration. Elle inclut des outils pour le géospatial et la recherche floue.
+      - link "Nous contacter" [ref=e19] [cursor=pointer]:
+        - /url: /contact
+  - contentinfo [ref=e21]:
+    - generic [ref=e22]:
+      - link "Logo du site Your Website Name" [ref=e24] [cursor=pointer]:
+        - /url: /
+        - img "Logo du site" [ref=e25]
+        - generic [ref=e26]: Your Website Name
+      - generic [ref=e27]:
+        - list [ref=e28]:
+          - listitem [ref=e29]:
+            - link "Politique de confidentialité" [ref=e30] [cursor=pointer]:
+              - /url: /privacy-policy
+          - listitem [ref=e31]:
+            - link "Conditions d'utilisation" [ref=e32] [cursor=pointer]:
+              - /url: /terms
+          - listitem [ref=e33]:
+            - link "Contact" [ref=e34] [cursor=pointer]:
+              - /url: /contact
+        - button "Langue (Français)" [ref=e36]
+        - group "Thème d'affichage" [ref=e38]:
+          - button "Système" [pressed] [ref=e39] [cursor=pointer]
+          - button "Clair" [ref=e41] [cursor=pointer]
+          - button "Sombre" [ref=e43] [cursor=pointer]
+    - separator [ref=e45]
+    - generic [ref=e46]: © 2026 Your Website Name. Tous droits réservés.

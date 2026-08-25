@@ -1,0 +1,48 @@
+- generic [active]:
+  - generic [ref=e1]:
+    - heading "Letters Refresh Clear" [level=1] [ref=e2]:
+      - text: Letters
+      - generic [ref=e3]:
+        - link "Refresh" [ref=e4] [cursor=pointer]:
+          - /url: /letter_opener/
+        - link "Clear" [ref=e5] [cursor=pointer]:
+          - /url: /letter_opener/clear
+    - list [ref=e7]:
+      - listitem [ref=e8]:
+        - 'link "From: Your Website Name <humans@example.com> Reply-To: Your Website Name <humans@example.com> Subject: Instructions de confirmation Date: Aug 25, 2026 10:06:33 PM CEST To: anthonyamar@labodessons.fr" [ref=e9] [cursor=pointer]':
+          - /url: /letter_opener/1787688393_464077_9ab8e57/rich
+          - generic [ref=e10]:
+            - term [ref=e11]: "From:"
+            - definition [ref=e12]: Your Website Name <humans@example.com>
+            - term [ref=e13]: "Reply-To:"
+            - definition [ref=e14]: Your Website Name <humans@example.com>
+            - term [ref=e15]: "Subject:"
+            - definition [ref=e16]:
+              - strong [ref=e17]: Instructions de confirmation
+            - term [ref=e18]: "Date:"
+            - definition [ref=e19]: Aug 25, 2026 10:06:33 PM CEST
+            - term [ref=e20]: "To:"
+            - definition [ref=e21]: anthonyamar@labodessons.fr
+        - button "X" [ref=e22] [cursor=pointer]:
+          - strong [ref=e23]: X
+  - iframe [ref=e25]:
+    - generic [ref=f1e2]:
+      - generic [ref=f1e4]:
+        - term [ref=f1e5]: "From:"
+        - definition [ref=f1e6]: Your Website Name <humans@example.com>
+        - term [ref=f1e7]: "Reply-To:"
+        - definition [ref=f1e8]: Your Website Name <humans@example.com>
+        - term [ref=f1e9]: "Subject:"
+        - definition [ref=f1e10]:
+          - strong [ref=f1e11]: Instructions de confirmation
+        - term [ref=f1e12]: "Date:"
+        - definition [ref=f1e13]: Aug 25, 2026 10:06:33 PM CEST
+        - term [ref=f1e14]: "To:"
+        - definition [ref=f1e15]: anthonyamar@labodessons.fr
+      - iframe [ref=f1e16]:
+        - generic [active] [ref=f2e1]:
+          - paragraph [ref=f2e2]: Bienvenue anthonyamar@labodessons.fr !
+          - paragraph [ref=f2e3]: "Vous pouvez confirmer votre adresse e-mail via le lien ci-dessous :"
+          - paragraph [ref=f2e4]:
+            - link "Confirmer mon compte" [ref=f2e5] [cursor=pointer]:
+              - /url: http://localhost:3000/users/confirmation?confirmation_token=J2H7sxMPNySRw-pbzoCj

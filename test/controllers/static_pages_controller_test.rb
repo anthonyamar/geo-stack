@@ -9,6 +9,44 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
       assert_response :success
     end
+
+    should "apply a DaisyUI theme and base background on the document" do
+      get root_path
+
+      assert_match(/<html[^>]*data-theme="user-theme"/, response.body)
+      assert_match(/<html[^>]*class="[^"]*bg-base/, response.body)
+      assert_match(/<body[^>]*class="[^"]*bg-base/, response.body)
+      assert_match(/<header[^>]*class="[^"]*bg-base/, response.body)
+    end
+
+    should "keep only auth links in the header" do
+      get root_path
+      header = response.body[%r{<header[\s\S]*?</header>}].to_s
+
+      assert_match I18n.t("layouts.header.sign_in"), header
+      assert_match I18n.t("layouts.header.sign_up"), header
+      assert_no_match I18n.t("nav.contact"), header
+      assert_no_match I18n.t("nav.locale.en"), header
+      assert_no_match I18n.t("nav.locale.fr"), header
+    end
+
+    should "keep contact and locale switcher in the footer without a made-with-love line" do
+      get root_path
+      footer = response.body[%r{<footer[\s\S]*?</footer>}].to_s
+
+      assert_match I18n.t("nav.contact"), footer
+      assert_match I18n.t("nav.locale.en"), footer
+      assert_match I18n.t("nav.locale.fr"), footer
+      assert_no_match(/Made with love/, footer)
+      assert_no_match(/Fait avec amour/, footer)
+    end
+
+    should "render a simple hero without decorative clip-path blobs" do
+      get root_path
+
+      assert_match(/<h1/, response.body)
+      assert_no_match(/clip-path/, response.body)
+    end
   end
 
   context "#contact" do
@@ -67,6 +105,14 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
       assert_redirected_to contact_path
       assert_equal I18n.t("static_pages.create_contact.failure"), flash[:alert]
+    end
+
+    should "render dismissible flash above the overlapping header" do
+      post contact_path,
+           params: { contact_message: { name: "", email: "", message: "" } }
+      follow_redirect!
+
+      assert_match(/data-controller="flash-message"[^>]*z-\[60\]/, response.body)
     end
   end
 

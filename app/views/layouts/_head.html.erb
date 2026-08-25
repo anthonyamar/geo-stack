@@ -6,7 +6,7 @@
   <link rel="manifest" crossorigin="use-credentials" href="/manifest.json" />
 
   <%# FOUC: apply DaisyUI theme before first paint (preference in localStorage). %>
-  <script>
+  <script nonce="<%= content_security_policy_nonce %>">
     (function () {
       var root = document.documentElement;
       var locked = root.getAttribute("data-theme-lock");

@@ -10,6 +10,7 @@ export default class extends Controller {
   static targets = ['option'];
 
   connect() {
+    applyThemePreference(getThemePreference());
     this.syncOptions(getThemePreference());
 
     this.mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');

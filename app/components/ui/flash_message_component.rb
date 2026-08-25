@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Ui::FlashMessageComponent < ViewComponent::Base
+class Ui::FlashMessageComponent < ApplicationComponent
   attr_reader :type, :message
 
   def initialize(type:, message:)

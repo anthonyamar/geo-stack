@@ -1,5 +1,5 @@
 <% if flash.any? %>
-  <div data-controller='flash-message' class='inset-0 p-6 items-start justify-end'>
+  <div data-controller="flash-message" class="relative z-[60] p-6">
     <div class='flex flex-col items-center justify-center'>
       <% flash.each do |type, message| %>
         <%= render Ui::FlashMessageComponent.new(type: type, message: message) %>

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="<%= I18n.locale %>">
+<html lang="<%= I18n.locale %>" data-theme="user-theme" class="bg-base-200">
   <%= render "layouts/head" %>
-  <body class="bg-base-200 text-base-content">
+  <body class="min-h-screen bg-base-200 text-base-content">
     <%= render "layouts/header" %>
     <main class="<%= content_for?(:main_class) ? yield(:main_class) : 'container mx-auto px-4 py-8' %>">
       <%= render "layouts/flash_messages" %>
       <%= yield %>
     </main>
-    <div class="relative z-10 bg-base-100">
+    <div class="relative z-10">
       <%= render "layouts/footer" %>
     </div>
   </body>
