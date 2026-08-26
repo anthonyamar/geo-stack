@@ -34,7 +34,7 @@ gem 'resend'
 # Utilities
 gem 'bootsnap', require: false
 gem 'figaro'
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 2.0'
 gem 'kramdown'
 
 # Components
