@@ -428,7 +428,7 @@ GEM
       io-console (~> 0.5)
     request_store (1.7.0)
       rack (>= 1.4)
-    resend (1.11.0)
+    resend (1.13.0)
       base64
       httparty (>= 0.22.0)
     responders (3.2.0)
@@ -797,7 +797,7 @@ CHECKSUMS
   regexp_parser (2.12.0) sha256=35a916a1d63190ab5c9009457136ae5f3c0c7512d60291d0d1378ba18ce08ebb
   reline (0.7.0) sha256=5b012d8e55dbf9d450f12bde2cf7d15ff546ae80b3f8f3b30e570d431815583d
   request_store (1.7.0) sha256=e1b75d5346a315f452242a68c937ef8e48b215b9453a77a6c0acdca2934c88cb
-  resend (1.11.0) sha256=fedfe78d9d3951f8478e80e350f3cfbf5a71992ca6bd0398156cc731e5b64294
+  resend (1.13.0) sha256=c30a4913a4580238546351a0cfefbae87eb06a716eb348146c1a2fe90b6f2d8f
   responders (3.2.0) sha256=89c2d6ac0ae16f6458a11524cae4a8efdceba1a3baea164d28ee9046bd3df55a
   rest-client (2.1.0) sha256=35a6400bdb14fae28596618e312776c158f7ebbb0ccad752ff4fa142bf2747e3
   restcountry (0.6.0) sha256=76f716917d532f3029055b8bd9a3f9c2531041990c8c6b2d0821db422ec5a4d8
